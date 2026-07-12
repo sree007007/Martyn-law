@@ -1,0 +1,43 @@
+# Venue-Ready — Netlify configuration
+# Static single-file site: no build step. Drag-and-drop this folder to deploy.
+
+[build]
+  publish = "."
+
+# ---------------------------------------------------------------------------
+# Security headers (applied to every response)
+# ---------------------------------------------------------------------------
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+    # Single-file site with inline <style>/<script>. Google Fonts allowed.
+    # connect-src/form-action allow the Formspree/MailerLite POST endpoint;
+    # frame-src allows the training video embed (Vimeo/YouTube etc).
+    Content-Security-Policy = "default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'self' https:; frame-src https:; form-action 'self' https:"
+
+# ---------------------------------------------------------------------------
+# Pretty-URL rewrites (serve the .html file, keep the clean path)
+# ---------------------------------------------------------------------------
+[[redirects]]
+  from = "/privacy"
+  to = "/privacy.html"
+  status = 200
+
+[[redirects]]
+  from = "/terms"
+  to = "/terms.html"
+  status = 200
+
+[[redirects]]
+  from = "/training"
+  to = "/training.html"
+  status = 200
+
+[[redirects]]
+  from = "/checklist"
+  to = "/checklist.html"
+  status = 200
