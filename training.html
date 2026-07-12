@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Volunteer training — Venue-Ready</title>
+<meta name="description" content="The Venue-Ready 20-minute volunteer briefing: watch the video, pass the 10-question check, and print your Briefing Completion Record.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#1E3D2F; --green-deep:#152B21; --paper:#FAF7F0; --paper-edge:#EFE9DC;
+    --ink:#22271F; --brass:#B08D3E; --brass-soft:#C9A85C; --amber:#8A5A16; --ok:#2F6B3A;
+    --line:#D8D2C4; --maxw:1060px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none!important;animation:none!important} }
+  body{font-family:'Atkinson Hyperlegible',system-ui,sans-serif; font-size:18.5px; line-height:1.65; color:var(--ink); background:var(--paper)}
+  h1,h2,h3{font-family:'Young Serif',Georgia,serif; font-weight:400; line-height:1.15}
+  a{color:var(--green)}
+  a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--brass); outline-offset:3px; border-radius:3px}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 22px}
+  .btn{display:inline-block; font-weight:700; font-size:17px; text-decoration:none; border-radius:6px; padding:14px 26px; cursor:pointer; border:2px solid transparent; font-family:inherit}
+  .btn-brass{background:var(--brass); color:#fff} .btn-brass:hover{background:#9a7a33}
+  .btn-green{background:var(--green); color:#fff} .btn-green:hover{background:var(--green-deep)}
+  .btn[disabled]{opacity:.5; cursor:not-allowed}
+
+  nav{position:sticky; top:0; z-index:50; background:var(--green-deep); border-bottom:1px solid rgba(201,168,92,.35)}
+  .nav-in{max-width:var(--maxw); margin:0 auto; padding:12px 22px; display:flex; align-items:center; gap:26px}
+  .logo{font-family:'Young Serif',serif; color:var(--paper); font-size:21px; text-decoration:none; margin-right:auto}
+  .logo span{color:var(--brass-soft)}
+  nav a.nl{color:#D9D4C6; text-decoration:none; font-size:15.5px}
+  nav a.nl:hover{color:var(--brass-soft)}
+
+  header{background:var(--green); color:var(--paper); padding:52px 0 46px; position:relative}
+  header::after{content:""; display:block; position:absolute; left:0; right:0; bottom:0; height:6px;
+    background:repeating-linear-gradient(90deg, var(--brass) 0 46px, transparent 46px 60px)}
+  header h1{font-size:clamp(30px,4.6vw,44px); color:#fff; margin:8px 0}
+  header p{color:#E7E3D6; font-size:18px; max-width:620px}
+  .eyebrow{font-size:13.5px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; color:var(--brass-soft)}
+
+  section{padding:48px 0}
+  .sec-head h2{font-size:clamp(24px,3.2vw,32px); color:var(--green); margin-bottom:10px}
+  .sec-head p{color:#4A5244; max-width:640px}
+
+  /* VIDEO */
+  .video-wrap{max-width:820px; margin:0 auto}
+  .video-box{position:relative; aspect-ratio:16/9; background:var(--green-deep); border:10px solid #6B4A26; outline:2px solid #4c3419;
+    border-radius:6px; display:flex; flex-direction:column; align-items:center; justify-content:center; color:var(--paper); text-align:center; padding:24px}
+  .video-box iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+  .video-box .play{width:76px; height:76px; border-radius:50%; border:3px solid var(--brass-soft); display:flex; align-items:center; justify-content:center; margin-bottom:16px}
+  .video-box .play::after{content:""; border-left:22px solid var(--brass-soft); border-top:13px solid transparent; border-bottom:13px solid transparent; margin-left:6px}
+  .video-box .vlabel{font-family:'Young Serif',serif; font-size:22px; color:#fff}
+  .video-box .vsub{font-size:15px; color:#CDD5C7; margin-top:6px}
+
+  /* QUIZ */
+  .quiz{max-width:820px; margin:0 auto}
+  .qitem{background:#fff; border:1px solid var(--line); border-radius:8px; padding:22px 22px; margin-bottom:16px}
+  .qitem legend{font-weight:700; font-size:18px; color:var(--green); margin-bottom:12px; padding:0}
+  .qitem .opt{display:flex; align-items:flex-start; gap:12px; padding:9px 12px; border:2px solid var(--line); border-radius:6px; margin-bottom:8px; cursor:pointer}
+  .qitem .opt:hover{border-color:var(--brass-soft)}
+  .qitem .opt input{margin-top:5px; width:18px; height:18px; accent-color:var(--green)}
+  .qitem.correct{border-color:var(--ok)} .qitem.wrong{border-color:#B23A2E}
+  .qitem .mark{font-weight:700; font-size:15px; margin-top:6px}
+  .qitem.correct .mark{color:var(--ok)} .qitem.wrong .mark{color:#B23A2E}
+  .quiz-actions{text-align:center; margin-top:8px}
+  .result{display:none; margin-top:22px; background:var(--paper); border-left:8px solid var(--brass); border-radius:6px; padding:22px 24px}
+  .result.show{display:block}
+  .result.pass{border-left-color:var(--ok)} .result.fail{border-left-color:var(--amber)}
+  .result h3{font-size:22px; margin-bottom:8px}
+  .result.pass h3{color:var(--ok)} .result.fail h3{color:var(--amber)}
+
+  /* BRIEFING COMPLETION RECORD */
+  #record{display:none; margin-top:34px}
+  #record.show{display:block}
+  .record-card{max-width:820px; margin:0 auto; background:#fff; border:2px solid var(--brass); border-radius:8px; padding:34px 32px}
+  .record-card .rc-head{display:flex; align-items:center; gap:16px; border-bottom:2px solid var(--line); padding-bottom:16px; margin-bottom:20px}
+  .rc-seal{width:64px; height:64px; border-radius:50%; background:var(--green); color:var(--brass-soft); display:flex; align-items:center; justify-content:center; font-family:'Young Serif',serif; font-size:22px; border:3px solid var(--brass); flex:none}
+  .rc-head h2{font-size:24px; color:var(--green)}
+  .rc-head p{font-size:14.5px; color:#5A6053}
+  .rc-fields{display:grid; grid-template-columns:1fr 1fr; gap:18px 24px; margin-bottom:18px}
+  @media(max-width:560px){.rc-fields{grid-template-columns:1fr}}
+  .rc-field label{display:block; font-size:13.5px; letter-spacing:.08em; text-transform:uppercase; font-weight:700; color:var(--amber); margin-bottom:5px}
+  .rc-field input{width:100%; font-family:inherit; font-size:18px; padding:8px 10px; border:none; border-bottom:2px solid var(--green); background:transparent; color:var(--ink)}
+  .rc-static{font-size:18px; padding:8px 2px; border-bottom:2px solid var(--line)}
+  .rc-note{font-size:14.5px; color:#5A6053; background:var(--paper-edge); border-radius:6px; padding:14px 16px; margin:6px 0 20px}
+  .rc-disclaimer{font-size:13px; color:#5A6053; line-height:1.6; border-top:1px solid var(--line); padding-top:14px; margin-top:18px}
+  .rc-actions{text-align:center; margin-top:18px}
+
+  footer{background:var(--green-deep); color:#B9C2B2; padding:46px 0 60px; font-size:14.5px; line-height:1.7}
+  footer .wrap{display:grid; gap:18px}
+  footer strong{color:var(--brass-soft)}
+  footer a{color:#D9D4C6}
+
+  /* ===== PRINT: A4 record only ===== */
+  @media print{
+    @page{ size:A4; margin:18mm }
+    body{background:#fff}
+    body *{visibility:hidden}
+    #record, #record *{visibility:visible}
+    #record{position:absolute; left:0; top:0; width:100%; margin:0}
+    .record-card{max-width:none; border:2px solid #000; box-shadow:none}
+    .rc-actions{display:none}
+    .rc-field input, .rc-static{border-bottom:1px solid #000}
+    a{color:#000; text-decoration:none}
+  }
+</style>
+</head>
+<body>
+
+<nav aria-label="Main">
+  <div class="nav-in">
+    <a class="logo" href="index.html">Venue<span>-</span>Ready</a>
+    <a class="nl" href="index.html#pricing">Pricing</a>
+    <a class="nl" href="index.html#faq">Questions</a>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <span class="eyebrow">Volunteer training · Complete Kit &amp; Training Kit</span>
+    <h1>The 20-minute volunteer briefing</h1>
+    <p>Watch the briefing, then answer ten questions. Score 8 or more and you can print a Briefing Completion Record for your evidence log.</p>
+  </div>
+</header>
+
+<section id="watch">
+  <div class="wrap">
+    <div class="video-wrap">
+      <div class="sec-head" style="margin-bottom:18px">
+        <h2>Step 1 — Watch the briefing</h2>
+        <p>Around 20 minutes. Have a pen handy; the quiz below checks the parts that matter on the day.</p>
+      </div>
+      <div class="video-box" id="videoBox">
+        <div class="play" aria-hidden="true"></div>
+        <div class="vlabel">Training video — 20 minutes</div>
+        <div class="vsub">The narrated briefing will play here.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="quiz-sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="quiz">
+      <div class="sec-head" style="margin-bottom:18px">
+        <h2>Step 2 — The ten-question check</h2>
+        <p>Choose one answer per question. You need 8 out of 10 to pass. You can retake it as many times as you like.</p>
+      </div>
+      <form id="quizForm"></form>
+      <div class="quiz-actions">
+        <button class="btn btn-brass" id="markBtn" type="button">Mark my answers</button>
+      </div>
+      <div class="result" id="result" role="status" aria-live="polite"></div>
+    </div>
+
+    <div id="record">
+      <div class="record-card">
+        <div class="rc-head">
+          <div class="rc-seal">VR</div>
+          <div>
+            <h2>Briefing Completion Record</h2>
+            <p>Martyn's Law volunteer briefing — Venue-Ready Complete Kit</p>
+          </div>
+        </div>
+        <div class="rc-fields">
+          <div class="rc-field"><label for="rcName">Name of volunteer</label><input id="rcName" type="text" placeholder="Full name"></div>
+          <div class="rc-field"><label for="rcVenue">Venue</label><input id="rcVenue" type="text" placeholder="Church / hall name"></div>
+          <div class="rc-field"><label>Date completed</label><div class="rc-static" id="rcDate">—</div></div>
+          <div class="rc-field"><label>Quiz score</label><div class="rc-static" id="rcScore">—</div></div>
+        </div>
+        <p class="rc-note"><strong>Why this is a record, not a certificate:</strong> no compliance certificate exists in law for Martyn's Law, so no one — including us — can issue one. This is a Briefing Completion Record: evidence that a named volunteer completed the briefing, to file in your evidence log.</p>
+        <div class="rc-disclaimer">
+          Venue-Ready provides independent template guidance based on the Terrorism (Protection of Premises) Act 2025 and the Home Office statutory guidance (April 2026). It is not legal advice and is not endorsed by the Home Office or the Security Industry Authority. The responsible person retains all legal duties under the Act. Official guidance is free at GOV.UK and ProtectUK.
+        </div>
+        <div class="rc-actions">
+          <button class="btn btn-green" id="printBtn" type="button">Print this record</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><strong>Venue-Ready</strong> is a trading name of <span style="color:var(--brass-soft)">[Company name — to be added]</span> Ltd, registered in England &amp; Wales, company no. [company number — to be added]. Registered office: [registered office — to be added]. ICO registration: [ICO number — to be added].</div>
+    <div>Venue-Ready provides independent template guidance based on the Terrorism (Protection of Premises) Act 2025 and the Home Office statutory guidance (April 2026). It is not legal advice and is not endorsed by the Home Office or the Security Industry Authority. The responsible person retains all legal duties under the Act. Official guidance is free at GOV.UK and ProtectUK.</div>
+    <div>Contact: <a href="mailto:hello@venue-ready.co.uk">hello@venue-ready.co.uk</a> · <a href="privacy.html">Privacy notice</a> · <a href="terms.html">Terms of sale</a> · © 2026</div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   CONFIG — EDIT THIS BLOCK ONLY, then redeploy.
+   ============================================================ */
+var CONFIG = {
+  VIDEO_EMBED_URL: "#TODO-REPLACE" // Embed URL for the 20-minute briefing (e.g. Vimeo/YouTube unlisted)
+};
+/* ===================== END CONFIG ===================== */
+
+(function(){
+  var TODO = "#TODO-REPLACE";
+
+  // --- Video: embed if a real URL is set, else keep the placeholder block ---
+  if(CONFIG.VIDEO_EMBED_URL && CONFIG.VIDEO_EMBED_URL!==TODO){
+    var box=document.getElementById('videoBox');
+    box.innerHTML='<iframe src="'+CONFIG.VIDEO_EMBED_URL+'" title="Training video — 20 minutes" allow="fullscreen; picture-in-picture" allowfullscreen></iframe>';
+  }
+
+  // --- Quiz: 10 questions drawn from the four procedures & scope rules ---
+  var QUESTIONS=[
+    {q:"At what expected attendance does a venue enter scope under Martyn's Law (the standard tier)?",
+     o:["100 people","200 people","500 people","800 people"], a:1},
+    {q:"For a venue that is not a place of worship, what headcount moves it into the enhanced tier?",
+     o:["400 people","800 people","1,200 people","2,000 people"], a:1},
+    {q:"Which tier does a place of worship sit in, regardless of how many people attend?",
+     o:["Always the enhanced tier","The standard tier, whatever its size","Out of scope, whatever its size","It depends on the building's value"], a:1},
+    {q:"When you work out your busiest headcount for scope, who should you count?",
+     o:["Only ticketed or seated visitors","Only adults","Everyone present — visitors, staff, volunteers and performers","Only people who signed in"], a:2},
+    {q:"When is it right to invacuate rather than evacuate?",
+     o:["Whenever the fire alarm sounds","When the danger is outside and it is safer to bring people in or keep them in","Only at night","Whenever a hirer asks you to"], a:1},
+    {q:"What is the purpose of the lockdown procedure?",
+     o:["To move everyone to the car park","To secure the building and keep a threat outside from getting in","To switch off all the lights","To start a head count"], a:1},
+    {q:"You find an unattended bag or a suspicious item. What should you do?",
+     o:["Open it to see who it belongs to","Pick it up and carry it outside","Do not touch it, move people away, and call 999","Leave it and carry on as normal"], a:2},
+    {q:"After an incident, who gives the all-clear for people to return?",
+     o:["The churchwarden or hall committee","Whoever first raised the alarm","The emergency services / police","Any volunteer on duty"], a:2},
+    {q:"Does a standard-tier venue need CCTV, barriers or security guards to comply?",
+     o:["Yes — all three are required","No — standard-tier duties are procedures, not physical equipment","Only CCTV is required","Only security guards are required"], a:1},
+    {q:"What are the four public protection procedures the briefing covers?",
+     o:["Fire, flood, first aid and lost property","Evacuation, invacuation, lockdown and communication","Search, detain, report and record","Lockdown, CCTV, guarding and screening"], a:1}
+  ];
+
+  var form=document.getElementById('quizForm');
+  QUESTIONS.forEach(function(item, i){
+    var fs=document.createElement('fieldset');
+    fs.className='qitem'; fs.id='q'+i;
+    var html='<legend>'+(i+1)+'. '+item.q+'</legend>';
+    item.o.forEach(function(opt, j){
+      var id='q'+i+'o'+j;
+      html+='<label class="opt" for="'+id+'"><input type="radio" id="'+id+'" name="q'+i+'" value="'+j+'"><span>'+opt+'</span></label>';
+    });
+    html+='<div class="mark" hidden></div>';
+    fs.innerHTML=html;
+    form.appendChild(fs);
+  });
+
+  var result=document.getElementById('result');
+  var record=document.getElementById('record');
+
+  document.getElementById('markBtn').onclick=function(){
+    var score=0, unanswered=0;
+    QUESTIONS.forEach(function(item, i){
+      var fs=document.getElementById('q'+i);
+      var sel=form.querySelector('input[name="q'+i+'"]:checked');
+      var mark=fs.querySelector('.mark');
+      fs.classList.remove('correct','wrong');
+      mark.hidden=false;
+      if(!sel){ unanswered++; fs.classList.add('wrong'); mark.textContent='Please choose an answer.'; return; }
+      if(parseInt(sel.value)===item.a){ score++; fs.classList.add('correct'); mark.textContent='Correct.'; }
+      else{ fs.classList.add('wrong'); mark.textContent='Not quite — the correct answer is: '+item.o[item.a]; }
+    });
+
+    result.className='result show '+(score>=8?'pass':'fail');
+    if(score>=8){
+      result.innerHTML='<h3>Passed — '+score+' out of 10</h3><p>Well done. Your Briefing Completion Record is ready below: add your name and venue, then print it for your evidence log.</p>';
+      document.getElementById('rcScore').textContent=score+' out of 10';
+      var d=new Date();
+      var months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+      document.getElementById('rcDate').textContent=d.getDate()+' '+months[d.getMonth()]+' '+d.getFullYear();
+      record.classList.add('show');
+      record.scrollIntoView({behavior:'smooth', block:'start'});
+    } else {
+      var msg = unanswered ? 'Answer every question, then mark again.' : 'You need 8 to pass. Review the questions marked in red — the correct answers are shown — then have another go.';
+      result.innerHTML='<h3>'+score+' out of 10 — not yet</h3><p>'+msg+'</p>';
+      record.classList.remove('show');
+      result.scrollIntoView({behavior:'smooth', block:'nearest'});
+    }
+  };
+
+  document.getElementById('printBtn').onclick=function(){ window.print(); };
+})();
+</script>
+</body>
+</html>
