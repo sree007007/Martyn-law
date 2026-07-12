@@ -125,6 +125,7 @@
   .verdict .small{font-size:14.5px; color:#5A6053}
   .capture{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
   .capture input[type=email]{flex:1 1 240px; font-size:16.5px; padding:12px 14px; border:2px solid var(--line); border-radius:6px; font-family:inherit}
+  .signup-msg{margin-top:14px; font-size:16.5px; font-weight:700; color:var(--ok); background:#EAF3EC; border-left:5px solid var(--ok); border-radius:5px; padding:12px 16px}
 
   /* PACK CONTENTS */
   .docs{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px}
@@ -332,7 +333,7 @@
           <li>Free updates until commencement</li>
           <li>Email support for completion questions</li>
         </ul>
-        <a class="btn btn-green" href="PACK_PAYMENT_LINK_HERE">Get the pack — £149</a>
+        <a class="btn btn-green" href="#" data-pay="pack">Get the pack — £149</a>
       </div>
       <div class="price feat">
         <span class="tag">Most venues choose this</span>
@@ -344,7 +345,7 @@
           <li>Unlimited volunteer Briefing Completion Records — the training evidence your log needs</li>
           <li>Free updates until commencement</li>
         </ul>
-        <a class="btn btn-brass" href="KIT_PAYMENT_LINK_HERE">Get the Complete Kit — £199</a>
+        <a class="btn btn-brass" href="#" data-pay="kit">Get the Complete Kit — £199</a>
       </div>
       <div class="price">
         <span class="tag">Already drafted your own documents?</span>
@@ -355,7 +356,7 @@
           <li>Unlimited Briefing Completion Records</li>
           <li>Works alongside documents from any source</li>
         </ul>
-        <a class="btn btn-green" href="TRAINING_PAYMENT_LINK_HERE">Get the Training Kit — £49</a>
+        <a class="btn btn-green" href="#" data-pay="training">Get the Training Kit — £49</a>
       </div>
       <div class="price">
         <span class="tag">Dioceses · associations · multi-site</span>
@@ -429,7 +430,7 @@
       <div class="doc" data-n="4"><h3>Wrong numbers</h3><p>"Applies from 100 capacity", "Tier 1" — the real thresholds are 200 (standard) and 800 (enhanced). Sellers who get the basics wrong shouldn't write your procedures.</p></div>
       <div class="doc" data-n="5"><h3>Countdown-timer panic</h3><p>Spring 2027 is real; the panic isn't. The SIA has said it will be supportive and proportionate. Anyone selling fear is selling for themselves.</p></div>
     </div>
-    <p class="plus" style="text-align:center"><strong>Free download:</strong> the one-page Mis-selling Checklist to keep with your committee papers — <a href="LEAD_MAGNET_LINK_HERE">get it here</a>. Share it even if you never buy from us.</p>
+    <p class="plus" style="text-align:center"><strong>Free download:</strong> the one-page Mis-selling Checklist to keep with your committee papers — <a href="#" data-pay="lead">get it here</a>. Share it even if you never buy from us.</p>
   </div>
 </section>
 
@@ -461,12 +462,40 @@
   <div class="wrap">
     <div><strong>Venue-Ready</strong> is a trading name of [WIFE'S LTD NAME] Ltd, registered in England & Wales, company no. [XXXXXXX]. Registered office: [address]. ICO registration: [ZXXXXXXX].</div>
     <div>Venue-Ready provides independent template guidance based on the Terrorism (Protection of Premises) Act 2025 and the Home Office statutory guidance (April 2026). It is not legal advice and is not endorsed by the Home Office or the Security Industry Authority. The responsible person retains all legal duties under the Act. Official guidance is free at GOV.UK and ProtectUK.</div>
-    <div>Contact: <a href="mailto:hello@venue-ready.co.uk">hello@venue-ready.co.uk</a> · <a href="#" >Privacy notice</a> · <a href="#">Terms of sale</a> · © 2026</div>
+    <div>Contact: <a href="mailto:hello@venue-ready.co.uk">hello@venue-ready.co.uk</a> · <a href="privacy.html">Privacy notice</a> · <a href="terms.html">Terms of sale</a> · © 2026</div>
   </div>
 </footer>
 
 <script>
+/* ============================================================
+   CONFIG — EDIT THIS BLOCK ONLY, then redeploy.
+   Replace each "#TODO-REPLACE" with the real live URL/endpoint
+   before launch. Nothing else on the site needs changing.
+   ============================================================ */
+var CONFIG = {
+  KIT_PAYMENT_URL:      "#TODO-REPLACE", // Stripe/Gumroad checkout — Complete Kit £199
+  PACK_PAYMENT_URL:     "#TODO-REPLACE", // Stripe/Gumroad checkout — Document Pack £149
+  TRAINING_PAYMENT_URL: "#TODO-REPLACE", // Stripe/Gumroad checkout — Training Kit £49
+  LEAD_MAGNET_URL:      "#TODO-REPLACE", // Mis-selling Checklist download (checklist.html or hosted PDF)
+  FORM_ENDPOINT:        "#TODO-REPLACE"  // Formspree/MailerLite POST endpoint for email capture
+};
+/* ===================== END CONFIG ===================== */
+
 (function(){
+  var TODO = "#TODO-REPLACE";
+
+  // --- Wire static payment / download buttons from CONFIG ---
+  var payMap = {
+    kit: CONFIG.KIT_PAYMENT_URL,
+    pack: CONFIG.PACK_PAYMENT_URL,
+    training: CONFIG.TRAINING_PAYMENT_URL,
+    lead: CONFIG.LEAD_MAGNET_URL
+  };
+  document.querySelectorAll('[data-pay]').forEach(function(a){
+    a.setAttribute('href', payMap[a.getAttribute('data-pay')] || TODO);
+  });
+
+  // --- Scope checker ---
   var type=null, pub=null;
   function wire(groupId, set){
     var g=document.getElementById(groupId);
@@ -483,18 +512,57 @@
   document.getElementById('plus').onclick=function(){hc.value=Math.min(5000,(parseInt(hc.value)||0)+25)};
 
   var V=document.getElementById('verdict');
-  function capture(msg){
-    return '<div class="capture"><input type="email" placeholder="you@example.org" aria-label="Email address">'+
-      '<button class="btn btn-green" onclick="alert(\'Thank you — check your inbox shortly.\')">'+msg+'</button></div>'+
+
+  // Build an email-capture form that POSTs to FORM_ENDPOINT.
+  // verdict: "out-of-scope" | "standard" | "enhanced"
+  // productInterest: optional string, added only where a product is relevant.
+  function capture(msg, verdict, productInterest){
+    var pi = productInterest ? '<input type="hidden" name="product_interest" value="'+productInterest+'">' : '';
+    return '<form class="capture" data-signup novalidate>'+
+      '<input type="hidden" name="verdict" value="'+verdict+'">'+ pi +
+      '<input type="email" name="email" placeholder="you@example.org" aria-label="Email address">'+
+      '<button class="btn btn-green" type="submit">'+msg+'</button>'+
+      '</form>'+
       '<p class="small">One useful email now, occasional updates before commencement, unsubscribe anytime. No spam — we\'re volunteers\' side, not marketers\'.</p>';
   }
+
+  function showMsg(form, msg){
+    var p=document.createElement('p');
+    p.className='signup-msg'; p.setAttribute('role','status'); p.textContent=msg;
+    form.replaceWith(p);
+  }
+
+  // Delegated submit handler for any capture form inside the verdict.
+  V.addEventListener('submit', function(e){
+    var form=e.target.closest('form[data-signup]'); if(!form) return;
+    e.preventDefault();
+    if(CONFIG.FORM_ENDPOINT===TODO){
+      showMsg(form, 'Email signup goes live at launch — check back shortly.');
+      return;
+    }
+    var email=(form.querySelector('input[type=email]').value||'').trim();
+    if(!/.+@.+\..+/.test(email)){
+      showMsg(form, 'Please enter a valid email address and try again.');
+      return;
+    }
+    var btn=form.querySelector('button'); if(btn){ btn.disabled=true; btn.textContent='Sending…'; }
+    fetch(CONFIG.FORM_ENDPOINT, {method:'POST', body:new FormData(form), headers:{'Accept':'application/json'}})
+      .then(function(r){
+        if(!r.ok) throw new Error('bad response');
+        showMsg(form, 'Thank you — you\'re on the list. Check your inbox shortly.');
+      })
+      .catch(function(){
+        showMsg(form, 'Sorry — that didn\'t send. Email hello@venue-ready.co.uk and we\'ll sort it.');
+      });
+  });
+
   document.getElementById('run').onclick=function(){
     var n=parseInt(hc.value)||0, html='', cls='';
     if(!type||!pub){ V.className='verdict show std'; V.innerHTML='<h3>Two quick taps first</h3><p>Choose your venue type (question 1) and whether it\'s open to the public (question 3), then try again.</p>'; return; }
-    if(pub==='no'){ cls='ok'; html='<h3>Likely out of scope</h3><p>Premises not open to the public for these occasions generally fall outside the Act. Keep a note of this check with your records, and re-run it if your use changes.</p>'+capture('Email me the confirmation letter'); }
-    else if(n<200){ cls='ok'; html='<h3>Out of scope — and that\'s official</h3><p>Below 200 people at your busiest reasonable occasion, Martyn\'s Law duties don\'t apply to you. No notification, no procedures required. Review annually or when your use changes.</p><p><strong>Keep the evidence:</strong> we\'ll email you a free one-page confirmation letter to file with your records.</p>'+capture('Email me the free letter'); }
-    else if(n<800 || type==='worship'){ cls='std'; html='<h3>Standard tier — this is exactly who the pack is for</h3><p>'+(type==='worship'&&n>=800?'Places of worship remain in the standard tier whatever their size. ':'Between 200 and 799 people puts you in the standard tier. ')+'You\'ll need to notify the SIA from commencement and have four simple procedures in place: evacuation, invacuation, lockdown and communication.</p><p><strong>The Complete Kit gets you there in one afternoon — documents, training video and volunteer records, £199 once.</strong></p><div class="capture"><a class="btn btn-brass" href="KIT_PAYMENT_LINK_HERE">Get the Complete Kit — £199</a><a class="btn btn-green" href="PACK_PAYMENT_LINK_HERE">Documents only — £149</a></div>'+capture('Or email me the free starter checklist'); }
-    else { cls='std'; html='<h3>Enhanced tier — you need more than a pack</h3><p>At 800+ people, non-worship venues carry heavier duties: protective measures, a designated senior individual and a compliance document for the SIA. Our pack is a foundation but not sufficient on its own.</p><p>Honest advice: read the enhanced-tier chapters of the statutory guidance on GOV.UK and consider specialist support. We\'d rather tell you that than sell you the wrong thing.</p>'+capture('Email me the enhanced-tier reading list'); }
+    if(pub==='no'){ cls='ok'; html='<h3>Likely out of scope</h3><p>Premises not open to the public for these occasions generally fall outside the Act. Keep a note of this check with your records, and re-run it if your use changes.</p>'+capture('Email me the confirmation letter','out-of-scope'); }
+    else if(n<200){ cls='ok'; html='<h3>Out of scope — and that\'s official</h3><p>Below 200 people at your busiest reasonable occasion, Martyn\'s Law duties don\'t apply to you. No notification, no procedures required. Review annually or when your use changes.</p><p><strong>Keep the evidence:</strong> we\'ll email you a free one-page confirmation letter to file with your records.</p>'+capture('Email me the free letter','out-of-scope'); }
+    else if(n<800 || type==='worship'){ cls='std'; html='<h3>Standard tier — this is exactly who the pack is for</h3><p>'+(type==='worship'&&n>=800?'Places of worship remain in the standard tier whatever their size. ':'Between 200 and 799 people puts you in the standard tier. ')+'You\'ll need to notify the SIA from commencement and have four simple procedures in place: evacuation, invacuation, lockdown and communication.</p><p><strong>The Complete Kit gets you there in one afternoon — documents, training video and volunteer records, £199 once.</strong></p><div class="capture"><a class="btn btn-brass" href="'+CONFIG.KIT_PAYMENT_URL+'">Get the Complete Kit — £199</a><a class="btn btn-green" href="'+CONFIG.PACK_PAYMENT_URL+'">Documents only — £149</a></div>'+capture('Or email me the free starter checklist','standard','complete-kit'); }
+    else { cls='std'; html='<h3>Enhanced tier — you need more than a pack</h3><p>At 800+ people, non-worship venues carry heavier duties: protective measures, a designated senior individual and a compliance document for the SIA. Our pack is a foundation but not sufficient on its own.</p><p>Honest advice: read the enhanced-tier chapters of the statutory guidance on GOV.UK and consider specialist support. We\'d rather tell you that than sell you the wrong thing.</p>'+capture('Email me the enhanced-tier reading list','enhanced'); }
     V.className='verdict show '+cls; V.innerHTML=html;
     V.scrollIntoView({behavior:'smooth', block:'nearest'});
   };
