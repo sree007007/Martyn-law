@@ -740,6 +740,16 @@
     var list = form.getAttribute('data-form');
     var btn = form.querySelector('button');
     if(!btn) return;
+
+    /* These captures are divs, not <form>s, so Enter would otherwise do nothing.
+       Typing an address and pressing Enter is what most people expect. */
+    var emailInput = form.querySelector('input[type=email]');
+    if(emailInput){
+      emailInput.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.keyCode === 13){ e.preventDefault(); btn.click(); }
+      });
+    }
+
     btn.addEventListener('click', function(){
       var input = form.querySelector('input[type=email]'), v = (input.value || '').trim();
       if(!validEmail(v)){
