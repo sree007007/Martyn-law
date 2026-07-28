@@ -96,8 +96,10 @@ not an accident, and several are tuned to the millimetre.
    registered office, ICO number. Ask the owner — never invent these.
 4. **VAT position** — `[VAT position confirmed at launch]` in the #buying section.
 5. **Phone number and hours** — `[phone number] — [days and hours]` in the #buying section.
-6. **Record the training video**, then set `VIDEO_EMBED_URL` in `training.html`. Until it
-   exists, do not list the Complete Kit as available.
+6. **Record the training video** (optional now), then set `VIDEO_EMBED_URL` in
+   `training.html`. The video box stays hidden until that URL is real, so the page never
+   promises a video that isn't there. Requirement 5 is already met by the 15 briefing
+   slides on that page — the video is an upgrade, no longer a blocker.
 
 ### Done (do not redo)
 - Config-first wiring of every payment/download button, with email fallbacks.
@@ -107,7 +109,8 @@ not an accident, and several are tuned to the millimetre.
   refund promise and invoice/BACS route — **if one changes, change the other.**
 - Favicon, og-image, full OG/Twitter meta.
 - `netlify.toml`: security headers + pretty-URL rewrites.
-- `training.html`, `checklist.html`, `review-sheet.html`.
+- `training.html` — now carries the full 15-slide volunteer briefing (present full screen,
+  print as a handout, readable with JS off), the 10-question quiz and the Completion Record.
 - Annual review reminder (requirement 6): capture in #minimum, printable sheet, and the
   yearly email drafted in `content/annual-review-reminder-email.md`.
 - All five promised lead magnets now exist as pages (see the table above). Every capture
@@ -124,9 +127,9 @@ not an accident, and several are tuned to the millimetre.
 ### Two things flagged to the owner, not yet actioned
 - **"MOST VENUES CHOOSE THIS"** on the Complete Kit card (`.price.feat::before`) is social
   proof we have not earned — there are no customers yet. Flagged; the owner decides.
-- The Complete Kit and several FAQ answers describe the **narrated training video as
-  available**. It is unrecorded. Either record it before launch or demote the Kit and mark
-  training as coming later — do not list an unbuilt product.
+- ~~The Complete Kit described an unrecorded video as available.~~ **Resolved:** the
+  briefing now exists as 15 presentable/printable slides in `training.html`, taken from the
+  Volunteer Briefing Deck, and all site copy describes the briefing rather than a video.
 
 ### Legal facts awaiting verification
 Marked `<!-- VERIFY -->` in `enhanced-tier-reading-list.html`: the enhanced-tier penalty

@@ -17,6 +17,7 @@
     --line:#D8D2C4; --maxw:1060px;
   }
   *{margin:0;padding:0;box-sizing:border-box}
+  [hidden]{display:none!important}   /* author display rules must not beat the hidden attribute */
   html{scroll-behavior:smooth}
   @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none!important;animation:none!important} }
   body{font-family:'Atkinson Hyperlegible',system-ui,sans-serif; font-size:18.5px; line-height:1.65; color:var(--ink); background:var(--paper)}
@@ -56,6 +57,69 @@
   .video-box .play::after{content:""; border-left:22px solid var(--brass-soft); border-top:13px solid transparent; border-bottom:13px solid transparent; margin-left:6px}
   .video-box .vlabel{font-family:'Young Serif',serif; font-size:22px; color:#fff}
   .video-box .vsub{font-size:15px; color:#CDD5C7; margin-top:6px}
+
+  /* ===== BRIEFING SLIDES ===== */
+  .deck-wrap{max-width:900px; margin:0 auto}
+  .deck-tools{display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-bottom:18px}
+  .deck-tools .btn{font-size:15.5px; padding:10px 18px}
+  .btn-quiet{background:#fff; color:var(--green); border-color:var(--line)}
+  .btn-quiet:hover{border-color:var(--brass)}
+
+  .deck{background:var(--green); border:10px solid #6B4A26; outline:2px solid #4c3419; border-radius:6px;
+    box-shadow:0 18px 40px rgba(0,0,0,.25); position:relative}
+  .slide{color:var(--paper); padding:38px 42px; display:flex; flex-direction:column; justify-content:center}
+  .slide + .slide{border-top:2px solid rgba(201,168,92,.3)}      /* no-JS: readable stack */
+  .js .slide{display:none; border-top:none; min-height:460px}
+  .js .slide.is-active{display:flex}
+
+  .s-num{font-size:12.5px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; color:var(--brass-soft); margin-bottom:10px}
+  .s-title{font-family:'Young Serif',serif; font-size:clamp(24px,3.4vw,34px); color:#fff; line-height:1.15; margin-bottom:14px}
+  .s-sub{font-size:16px; color:#C6D0C2; margin-bottom:12px}
+  .s-big{font-family:'Young Serif',serif; font-size:clamp(54px,9vw,86px); color:var(--brass-soft); line-height:1; margin:4px 0 10px}
+  .s-lead{font-size:18px; color:#EDEADF; margin-bottom:14px; max-width:64ch}
+  .s-list{list-style:none; margin:4px 0 0}
+  .s-list li{font-size:17px; color:#E7E3D6; padding:7px 0 7px 26px; position:relative; max-width:70ch}
+  .s-list li::before{content:"\2014"; position:absolute; left:0; color:var(--brass-soft)}
+  .s-foot{margin-top:16px; padding-top:14px; border-top:1px solid rgba(201,168,92,.35); font-size:16px; color:var(--brass-soft); font-weight:700}
+
+  .s-grid{display:grid; gap:14px; margin-top:6px}
+  .s-grid.four{grid-template-columns:repeat(4,1fr)}
+  .s-grid.three{grid-template-columns:repeat(3,1fr)}
+  .s-grid.two{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:820px){ .s-grid.four,.s-grid.three,.s-grid.two{grid-template-columns:1fr} }
+  .s-card{background:rgba(250,247,240,.08); border:2px solid rgba(201,168,92,.45); border-radius:8px; padding:16px 16px}
+  .s-card .cap{font-family:'Young Serif',serif; font-size:20px; color:var(--brass-soft); margin-bottom:4px}
+  .s-card .nm{font-weight:700; font-size:16px; color:#fff; margin-bottom:6px}
+  .s-card p{font-size:15px; color:#DDD9CB}
+  .s-card.no{border-color:rgba(178,58,46,.6)} .s-card.yes{border-color:rgba(47,107,58,.75)}
+
+  .s-step{display:grid; grid-template-columns:auto 1fr; gap:14px; align-items:start; padding:8px 0}
+  .s-step .sn{width:36px; height:36px; border-radius:6px; background:var(--brass); color:#20180a;
+    font-family:'Young Serif',serif; font-size:19px; display:flex; align-items:center; justify-content:center; flex:none}
+  .s-step h3{font-size:18px; color:#fff; margin-bottom:2px}
+  .s-step p{font-size:15.5px; color:#DDD9CB}
+
+  .ph{background:rgba(201,168,92,.22); border-bottom:2px dotted var(--brass-soft); padding:0 4px; border-radius:2px; color:#F5E7C3}
+
+  .deck-bar{display:flex; align-items:center; gap:14px; justify-content:space-between;
+    background:var(--green-deep); border-top:2px solid rgba(201,168,92,.35); padding:12px 16px; flex-wrap:wrap}
+  .deck-bar .count{font-family:'Young Serif',serif; color:var(--brass-soft); font-size:16px}
+  .deck-bar .navs{display:flex; gap:10px}
+  .deck-bar button{font-family:inherit; font-size:15.5px; font-weight:700; padding:9px 18px; border-radius:6px; cursor:pointer;
+    background:rgba(250,247,240,.1); color:#F2EFE4; border:2px solid rgba(201,168,92,.5)}
+  .deck-bar button:hover:not([disabled]){background:rgba(201,168,92,.25)}
+  .deck-bar button[disabled]{opacity:.4; cursor:not-allowed}
+  .deck-hint{text-align:center; font-size:14.5px; color:#5A6053; margin-top:12px}
+
+  /* Full-screen presenting in the hall */
+  .deck:fullscreen{border:none; outline:none; border-radius:0; display:flex; flex-direction:column; justify-content:center; background:var(--green)}
+  .deck:fullscreen .slide{min-height:0; flex:1; justify-content:center; padding:6vh 8vw}
+  .deck:fullscreen .s-title{font-size:5.2vw}
+  .deck:fullscreen .s-big{font-size:13vw}
+  .deck:fullscreen .s-lead{font-size:2.5vw}
+  .deck:fullscreen .s-list li{font-size:2.3vw}
+  .deck:fullscreen .s-card .nm, .deck:fullscreen .s-card p{font-size:1.8vw}
+  .deck:fullscreen .s-foot{font-size:2.1vw}
 
   /* QUIZ */
   .quiz{max-width:820px; margin:0 auto}
@@ -100,13 +164,33 @@
   @media print{
     @page{ size:A4; margin:18mm }
     body{background:#fff}
-    body *{visibility:hidden}
-    #record, #record *{visibility:visible}
+    body:not(.print-deck) *{visibility:hidden}
+    body:not(.print-deck) #record, body:not(.print-deck) #record *{visibility:visible}
     #record{position:absolute; left:0; top:0; width:100%; margin:0}
     .record-card{max-width:none; border:2px solid #000; box-shadow:none}
     .rc-actions{display:none}
     .rc-field input, .rc-static{border-bottom:1px solid #000}
     a{color:#000; text-decoration:none}
+
+    /* Handout: every slide, two to a page */
+    body.print-deck *{visibility:hidden}
+    body.print-deck #slides, body.print-deck #slides *{visibility:visible}
+    body.print-deck #slides{position:absolute; left:0; top:0; width:100%}
+    body.print-deck .deck{border:none; outline:none; box-shadow:none; background:#fff}
+    body.print-deck .slide{display:flex!important; min-height:0; break-inside:avoid; page-break-inside:avoid;
+      border:1.5px solid #999; border-radius:6px; margin:0 0 8mm; padding:10mm 11mm; background:#fff; color:#000}
+    body.print-deck .s-title{color:#000; font-size:19pt}
+    body.print-deck .s-num{color:#6B4A26}
+    body.print-deck .s-big{color:#6B4A26; font-size:40pt}
+    body.print-deck .s-lead, body.print-deck .s-list li, body.print-deck .s-card p,
+    body.print-deck .s-step p, body.print-deck .s-sub{color:#222; font-size:10.5pt}
+    body.print-deck .s-card .nm, body.print-deck .s-step h3{color:#000}
+    body.print-deck .s-card{border-color:#999; background:#fff}
+    body.print-deck .s-card .cap{color:#6B4A26}
+    body.print-deck .s-foot{color:#000; border-top-color:#999; font-size:10.5pt}
+    body.print-deck .s-step .sn{background:#6B4A26; color:#fff}
+    body.print-deck .ph{background:#f0e6c8; color:#000}
+    body.print-deck .deck-bar, body.print-deck .deck-tools, body.print-deck .deck-hint{display:none}
   }
 </style>
 </head>
@@ -130,14 +214,182 @@
 
 <section id="watch">
   <div class="wrap">
-    <div class="video-wrap">
+    <div class="deck-wrap">
       <div class="sec-head" style="margin-bottom:18px">
-        <h2>Step 1 — Watch the briefing</h2>
-        <p>Around 20 minutes. Have a pen handy; the quiz below checks the parts that matter on the day.</p>
+        <h2>Step 1 &mdash; The briefing</h2>
+        <p>Fifteen slides, about 20 minutes. Present them to your volunteers on a screen, or print them as a handout and talk through them in the hall &mdash; both count. The parts in <span class="ph">[brackets]</span> are the bits only you can fill in: your exits, your rooms, your phrases.</p>
       </div>
-      <div class="video-box" id="videoBox">
+
+      <div class="deck-tools">
+        <button class="btn btn-quiet" id="presentBtn" type="button">Present full screen</button>
+        <button class="btn btn-quiet" id="handoutBtn" type="button">Print as a handout</button>
+      </div>
+
+      <div id="slides">
+        <div class="deck" id="deck">
+      <article class="slide" id="slide1" role="group" aria-roledescription="slide" aria-label="Slide 1 of 15">
+    <div class="s-num">Venue-Ready · Martyn's Law briefing</div>
+    <div class="s-title">Keeping people safe</div>
+    <p class="s-lead">A 20-minute briefing for volunteers and helpers.</p>
+    <p class="s-sub"><span class="ph">[Venue name]</span> · <span class="ph">[Date]</span></p>
+    <div class="s-foot">Terrorism (Protection of Premises) Act 2025</div>
+      </article>
+      <article class="slide" id="slide2" role="group" aria-roledescription="slide" aria-label="Slide 2 of 15">
+    <div class="s-title">Why this law exists</div>
+    <div class="s-big">22</div>
+    <p class="s-lead">people were killed at the Manchester Arena in 2017. Martyn Hett was one of them.</p>
+    <ul class="s-list">
+      <li>His mother, Figen Murray, campaigned for a law so venues would be prepared &mdash; it carries his name.</li>
+      <li>The inquiry found preparedness, not equipment, is what saves lives in the first minutes.</li>
+    </ul>
+    <div class="s-foot">From Spring 2027, being prepared becomes a legal duty for venues like ours.</div>
+      </article>
+      <article class="slide" id="slide3" role="group" aria-roledescription="slide" aria-label="Slide 3 of 15">
+    <div class="s-title">What the law asks of a venue our size</div>
+    <div class="s-step"><span class="sn">1</span><div><h3>Tell the regulator (SIA) we are a qualifying venue</h3><p>A one-off online notification &mdash; the committee handles this.</p></div></div>
+    <div class="s-step"><span class="sn">2</span><div><h3>Have four simple procedures ready</h3><p>Evacuation &middot; Invacuation &middot; Lockdown &middot; Communication.</p></div></div>
+    <div class="s-step"><span class="sn">3</span><div><h3>Make sure people like YOU know them</h3><p>That is what today is for.</p></div></div>
+    <div class="s-foot">No barriers. No scanners. No cost to you. Procedures, not fortifications.</div>
+      </article>
+      <article class="slide" id="slide4" role="group" aria-roledescription="slide" aria-label="Slide 4 of 15">
+    <div class="s-title">Why we are in scope</div>
+    <div class="s-big"><span class="ph">[XXX]</span></div>
+    <p class="s-sub">people at our busiest, including helpers</p>
+    <ul class="s-list">
+      <li>200&ndash;799 people at the busiest reasonably expected occasion = <strong>standard tier</strong>.</li>
+      <li>We count everyone &mdash; visitors, volunteers, performers &mdash; at the peak event, not an average day.</li>
+      <li>Standard tier means: think, plan and brief. Written plans and briefed helpers are what is asked of us.</li>
+    </ul>
+    <div class="s-foot">Our completed plans live in <span class="ph">[location]</span> — the grab-card is by the main light switches.</div>
+      </article>
+      <article class="slide" id="slide5" role="group" aria-roledescription="slide" aria-label="Slide 5 of 15">
+    <div class="s-title">Four procedures &mdash; one decision</div>
+    <div class="s-grid four">
+      <div class="s-card"><div class="cap">GET OUT</div><div class="nm">Evacuation</div><p>Danger is inside &rarr; leave, away from it</p></div>
+      <div class="s-card"><div class="cap">GET IN</div><div class="nm">Invacuation</div><p>Danger is outside &rarr; come in, stay away from glass</p></div>
+      <div class="s-card"><div class="cap">KEEP OUT</div><div class="nm">Lockdown</div><p>Attacker approaching &rarr; lock, hide, stay quiet</p></div>
+      <div class="s-card"><div class="cap">TELL</div><div class="nm">Communication</div><p>Runs through all three &rarr; alert, instruct, call 999</p></div>
+    </div>
+    <div class="s-foot">The person in charge chooses whichever moves people AWAY from the danger.</div>
+      </article>
+      <article class="slide" id="slide6" role="group" aria-roledescription="slide" aria-label="Slide 6 of 15">
+    <div class="s-num">Procedure 1 of 4</div>
+    <div class="s-title">GET OUT &mdash; Evacuation</div>
+    <p class="s-lead">Used when the threat is inside &mdash; for example a suspicious unattended bag.</p>
+    <ul class="s-list">
+      <li>Listen for the announcement: "<span class="ph">[your evacuation phrase]</span>".</li>
+      <li>Guide people to the exit <strong>away from the danger</strong> &mdash; that may not be the usual door.</li>
+      <li>Sweep your zone as you go (toilets, kitchen, side rooms) &mdash; seconds, not a search.</li>
+      <li>Help those who need it — <span class="ph">[named arrangements]</span>.</li>
+      <li>Go further than the fire assembly point, out of sight of the building. Don't crowd the doors.</li>
+    </ul>
+    <div class="s-foot">Never touch or investigate a suspicious item. 999 once out.</div>
+      </article>
+      <article class="slide" id="slide7" role="group" aria-roledescription="slide" aria-label="Slide 7 of 15">
+    <div class="s-num">Procedure 2 of 4</div>
+    <div class="s-title">GET IN &mdash; Invacuation</div>
+    <p class="s-lead">Used when the danger is outside &mdash; walls between people and danger help.</p>
+    <ul class="s-list">
+      <li>Bring in anyone outside &mdash; car park, garden, churchyard, smoking area.</li>
+      <li>Move everyone to our invacuation space: <span class="ph">[named area away from glazing and doors]</span>.</li>
+      <li>Close external doors; keep people away from windows.</li>
+      <li>Stay calm and keep people together &mdash; "this is a precaution".</li>
+    </ul>
+    <div class="s-foot">Be ready to escalate to LOCKDOWN, or switch to EVACUATION if told.</div>
+      </article>
+      <article class="slide" id="slide8" role="group" aria-roledescription="slide" aria-label="Slide 8 of 15">
+    <div class="s-num">Procedure 3 of 4</div>
+    <div class="s-title">KEEP OUT &mdash; Lockdown</div>
+    <p class="s-lead">Used when an attacker is trying to reach people. Short, unmistakable instruction: "LOCKDOWN".</p>
+    <ul class="s-list">
+      <li>Nominated people lock or secure doors &mdash; only if it takes seconds and doesn't move you toward the threat.</li>
+      <li>Everyone else: away from doors and glass &rarr; into lockable rooms &rarr; low &rarr; quiet &rarr; phones silent.</li>
+      <li>Barricade if a door won't lock.</li>
+      <li>999 when safe &mdash; whisper: where you are, what you saw, how many are with you.</li>
+      <li>Open only for identified police officers.</li>
+    </ul>
+    <div class="s-foot">If escape becomes possible and safe: RUN. HIDE. TELL. &mdash; the national rule.</div>
+      </article>
+      <article class="slide" id="slide9" role="group" aria-roledescription="slide" aria-label="Slide 9 of 15">
+    <div class="s-num">Procedure 4 of 4</div>
+    <div class="s-title">TELL &mdash; Communication</div>
+    <p class="s-lead">The procedure that makes the other three work.</p>
+    <ul class="s-list">
+      <li>Our alert method: <span class="ph">[announcement / PA / bell / whistle pattern]</span> — one distinct signal per procedure.</li>
+      <li>Scripted first lines are on the grab-card &mdash; read them, don't improvise.</li>
+      <li><span class="ph">[Role]</span> calls 999. <span class="ph">[Role]</span> meets the police at <span class="ph">[point]</span>.</li>
+      <li>We warn our neighbours at <span class="ph">[premises]</span> — the number is on the grab-card.</li>
+    </ul>
+    <div class="s-foot">Afterwards: only the person in charge gives the all-clear.</div>
+      </article>
+      <article class="slide" id="slide10" role="group" aria-roledescription="slide" aria-label="Slide 10 of 15">
+    <div class="s-title">Who decides on the day</div>
+    <div class="s-grid three">
+      <div class="s-card"><div class="cap">Person in charge</div><div class="nm"><span class="ph">[Service leader / hall manager / event organiser]</span></div><p>Chooses the procedure &middot; makes announcements &middot; gives the all-clear</p></div>
+      <div class="s-card"><div class="cap">Deputy</div><div class="nm"><span class="ph">[Named role]</span></div><p>Steps in without being asked if the lead is absent or occupied</p></div>
+      <div class="s-card"><div class="cap">Zone helpers</div><div class="nm">You</div><p>Know your zone &middot; guide people &middot; sweep as you leave &middot; help those who need it</p></div>
+    </div>
+      </article>
+      <article class="slide" id="slide11" role="group" aria-roledescription="slide" aria-label="Slide 11 of 15">
+    <div class="s-title">Before anything happens: notice and tell</div>
+    <ul class="s-list">
+      <li>Trust your instincts &mdash; a person or item that doesn't fit the pattern of our venue is worth a word.</li>
+      <li>Unattended item: don't touch, don't crowd &mdash; ask around calmly, then tell the person in charge.</li>
+      <li>Someone testing doors, filming exits, or asking odd questions about busy times &mdash; tell the person in charge.</li>
+      <li>Emergency: 999. Non-urgent concern: 101, or the Anti-Terrorist Hotline on 0800 789 321.</li>
+      <li>You will never be criticised for raising something in good faith that turns out to be nothing.</li>
+    </ul>
+    <div class="s-foot">Free 45-minute ACT Awareness e-learning at protectuk.police.uk &mdash; counts as your formal training.</div>
+      </article>
+      <article class="slide" id="slide12" role="group" aria-roledescription="slide" aria-label="Slide 12 of 15">
+    <div class="s-title">On the day, you have three jobs</div>
+    <div class="s-step"><span class="sn">1</span><div><h3>Know your zone</h3><p>Which rooms you sweep, which exit you guide people to, who might need help.</p></div></div>
+    <div class="s-step"><span class="sn">2</span><div><h3>Know the signals</h3><p>The alert phrases for evacuation, invacuation and lockdown &mdash; they're on the grab-card.</p></div></div>
+    <div class="s-step"><span class="sn">3</span><div><h3>Act calmly, and first</h3><p>People copy the first confident mover. That's you.</p></div></div>
+      </article>
+      <article class="slide" id="slide13" role="group" aria-roledescription="slide" aria-label="Slide 13 of 15">
+    <div class="s-title">How we practise (and prove it)</div>
+    <ul class="s-list">
+      <li>One 20-minute walk-through a year — we physically walk the routes and spaces. Next: <span class="ph">[date]</span>.</li>
+      <li>Five-minute reminder at every volunteer induction and before major events.</li>
+      <li>Everything logged in the evidence log — kept with the fire logbook at <span class="ph">[location]</span>.</li>
+      <li>See something broken (a lock, a blocked exit, a dead bulb on a route)? Tell <span class="ph">[role]</span> — it goes on the action list.</li>
+    </ul>
+    <div class="s-foot">Questions between briefings: <span class="ph">[contact]</span>.</div>
+      </article>
+      <article class="slide" id="slide14" role="group" aria-roledescription="slide" aria-label="Slide 14 of 15">
+    <div class="s-title">Keep it in proportion</div>
+    <div class="s-grid two">
+      <div class="s-card no"><div class="cap">This is NOT</div>
+        <p>Guards, barriers or scanners<br>A reason to fear our own venue<br>Extra cost or kit for volunteers<br>A prediction that anything will happen</p></div>
+      <div class="s-card yes"><div class="cap">This IS</div>
+        <p>Knowing what we'd do in the first two minutes<br>The same care we already take with fire<br>A legal duty from Spring 2027<br>Mostly about calm, confident people &mdash; you</p></div>
+    </div>
+      </article>
+      <article class="slide" id="slide15" role="group" aria-roledescription="slide" aria-label="Slide 15 of 15">
+    <div class="s-title">Thank you</div>
+    <p class="s-lead" style="font-size:21px">You are the procedure. Everything else is paperwork.</p>
+    <ul class="s-list">
+      <li>Grab-card location: <span class="ph">[by the main light switches]</span></li>
+      <li>Free training: ACT Awareness e-learning at protectuk.police.uk</li>
+      <li>Questions: <span class="ph">[name / contact]</span></li>
+    </ul>
+    <div class="s-foot">Now take the ten-question check below and print your Briefing Completion Record.</div>
+      </article>
+          <div class="deck-bar" id="deckBar" hidden>
+            <div class="navs">
+              <button id="prevBtn" type="button">&larr; Back</button>
+              <button id="nextBtn" type="button">Next &rarr;</button>
+            </div>
+            <div class="count" id="deckCount" role="status" aria-live="polite">Slide 1 of 15</div>
+          </div>
+        </div>
+      </div>
+      <p class="deck-hint" id="deckHint" hidden>Use the arrow keys to move between slides.</p>
+
+      <div class="video-box" id="videoBox" hidden>
         <div class="play" aria-hidden="true"></div>
-        <div class="vlabel">Training video — 20 minutes</div>
+        <div class="vlabel">Training video &mdash; 20 minutes</div>
         <div class="vsub">The narrated briefing will play here.</div>
       </div>
     </div>
@@ -205,11 +457,74 @@ var CONFIG = {
 (function(){
   var TODO = "#TODO-REPLACE";
 
-  // --- Video: embed if a real URL is set, else keep the placeholder block ---
+  // --- Video: only shown once a real embed URL exists. Until then the slides
+  //     are the briefing, so nothing on this page promises a video that isn't here.
   if(CONFIG.VIDEO_EMBED_URL && CONFIG.VIDEO_EMBED_URL!==TODO){
     var box=document.getElementById('videoBox');
+    box.hidden=false;
     box.innerHTML='<iframe src="'+CONFIG.VIDEO_EMBED_URL+'" title="Training video — 20 minutes" allow="fullscreen; picture-in-picture" allowfullscreen></iframe>';
   }
+
+  // --- Briefing slides -----------------------------------------------------
+  // Without JS every slide is on the page, stacked and readable. With JS they
+  // become a deck you can present. Printing always gives the full handout.
+  (function(){
+    var deck = document.getElementById('deck');
+    if(!deck) return;
+    var slides = [].slice.call(deck.querySelectorAll('.slide'));
+    if(!slides.length) return;
+
+    document.documentElement.classList.add('js');
+    var bar   = document.getElementById('deckBar');
+    var hint  = document.getElementById('deckHint');
+    var count = document.getElementById('deckCount');
+    var prev  = document.getElementById('prevBtn');
+    var next  = document.getElementById('nextBtn');
+    bar.hidden = false; hint.hidden = false;
+
+    var i = 0;
+    function show(n){
+      i = Math.max(0, Math.min(slides.length - 1, n));
+      slides.forEach(function(s, k){ s.classList.toggle('is-active', k === i); });
+      count.textContent = 'Slide ' + (i + 1) + ' of ' + slides.length;
+      prev.disabled = (i === 0);
+      next.disabled = (i === slides.length - 1);
+    }
+    prev.addEventListener('click', function(){ show(i - 1); });
+    next.addEventListener('click', function(){ show(i + 1); });
+
+    deck.addEventListener('keydown', function(e){
+      if(e.key === 'ArrowRight' || e.key === 'PageDown'){ e.preventDefault(); show(i + 1); }
+      if(e.key === 'ArrowLeft'  || e.key === 'PageUp'){ e.preventDefault(); show(i - 1); }
+      if(e.key === 'Home'){ e.preventDefault(); show(0); }
+      if(e.key === 'End'){ e.preventDefault(); show(slides.length - 1); }
+    });
+    deck.tabIndex = 0;
+
+    // Swipe, for presenting from a phone or tablet
+    var x0 = null;
+    deck.addEventListener('touchstart', function(e){ x0 = e.changedTouches[0].clientX; }, {passive:true});
+    deck.addEventListener('touchend', function(e){
+      if(x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      if(Math.abs(dx) > 50){ show(dx < 0 ? i + 1 : i - 1); }
+      x0 = null;
+    }, {passive:true});
+
+    document.getElementById('presentBtn').addEventListener('click', function(){
+      if(deck.requestFullscreen){ deck.requestFullscreen().then(function(){ deck.focus(); }).catch(function(){}); }
+      else { deck.scrollIntoView({behavior:'smooth', block:'start'}); deck.focus(); }
+    });
+
+    // Print the whole deck as a handout, then put the page back as it was
+    document.getElementById('handoutBtn').addEventListener('click', function(){
+      document.body.classList.add('print-deck');
+      window.print();
+    });
+    window.addEventListener('afterprint', function(){ document.body.classList.remove('print-deck'); });
+
+    show(0);
+  })();
 
   // --- Quiz: 10 questions drawn from the four procedures & scope rules ---
   var QUESTIONS=[
