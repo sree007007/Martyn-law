@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Standard-tier starter checklist — Venue-Ready</title>
+<meta name="description" content="You're in scope at standard tier. Here are the seven things the law asks, in the order worth doing them — and which ones cost nothing.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#1E3D2F; --green-deep:#152B21; --paper:#FAF7F0; --paper-edge:#EFE9DC;
+    --ink:#22271F; --brass:#B08D3E; --brass-soft:#C9A85C; --amber:#8A5A16; --ok:#2F6B3A;
+    --line:#D8D2C4;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  @media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
+  body{font-family:'Atkinson Hyperlegible',system-ui,sans-serif; font-size:16px; line-height:1.55; color:var(--ink); background:var(--paper-edge); padding:26px 16px}
+  h1,h2,h3{font-family:'Young Serif',Georgia,serif; font-weight:400; line-height:1.15}
+  a{color:var(--green)}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--brass); outline-offset:3px; border-radius:3px}
+
+  .toolbar{max-width:820px; margin:0 auto 18px; display:flex; gap:12px; justify-content:space-between; align-items:center; flex-wrap:wrap}
+  .toolbar a{font-size:15px; text-decoration:none; font-weight:700}
+  .btn{display:inline-block; font-weight:700; font-size:16px; text-decoration:none; border-radius:6px; padding:11px 22px; cursor:pointer; border:2px solid transparent; font-family:inherit; background:var(--brass); color:#fff}
+  .btn:hover{background:#9a7a33}
+
+  .sheet{max-width:820px; margin:0 auto 20px; background:#fff; border:1px solid var(--line); box-shadow:0 8px 26px rgba(34,39,31,.12); padding:40px 44px 34px; position:relative}
+  .sheet::before{content:""; position:absolute; left:0; right:0; top:0; height:8px; background:repeating-linear-gradient(90deg, var(--brass) 0 46px, transparent 46px 60px)}
+
+  .head{display:flex; align-items:center; gap:16px; border-bottom:2px solid var(--line); padding-bottom:18px; margin-bottom:18px}
+  .seal{width:60px; height:60px; border-radius:50%; background:var(--green); color:var(--brass-soft); display:flex; align-items:center; justify-content:center; font-family:'Young Serif',serif; font-size:21px; border:3px solid var(--brass); flex:none}
+  .head .eyebrow{font-size:12.5px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; color:var(--amber)}
+  .head h1{font-size:29px; color:var(--green); margin-top:2px}
+  .intro{font-size:15.5px; margin-bottom:18px; color:#3D443A}
+  .intro strong{color:var(--green)}
+
+  .item{display:grid; grid-template-columns:auto auto 1fr auto; gap:14px; padding:12px 0; border-bottom:1px solid var(--paper-edge); break-inside:avoid; page-break-inside:avoid}
+  .item .box{width:22px; height:22px; border:2px solid var(--green); border-radius:3px; flex:none; margin-top:3px}
+  .item .n{font-family:'Young Serif',serif; font-size:22px; color:var(--brass); min-width:20px; text-align:center; line-height:1.3}
+  .item h3{font-size:17px; color:var(--green); margin-bottom:3px}
+  .item p{font-size:14.5px; color:#3D443A}
+  .item .who{font-size:12.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; white-space:nowrap; align-self:start; margin-top:4px}
+  .who.free{color:var(--ok)} .who.paid{color:var(--amber)}
+  @media(max-width:620px){ .item{grid-template-columns:auto auto 1fr} .item .who{grid-column:3; white-space:normal; margin-top:6px} }
+
+  .notreq{margin-top:20px; background:var(--green); color:var(--paper); border-radius:8px; padding:18px 20px; break-inside:avoid}
+  .notreq h2{color:var(--brass-soft); font-size:18px; margin-bottom:8px}
+  .notreq p{font-size:14.5px; color:#E7E3D6}
+
+  .callout{margin-top:16px; background:var(--paper-edge); border-left:5px solid var(--brass); border-radius:0 6px 6px 0; padding:14px 16px; font-size:14.5px; break-inside:avoid}
+  .callout strong{color:var(--green)}
+  .callout a{font-weight:700}
+
+  .url{text-align:center; font-family:'Young Serif',serif; font-size:18px; color:var(--green); margin-top:16px}
+  .disclaimer{font-size:11.5px; color:#5A6053; line-height:1.5; border-top:1px solid var(--line); padding-top:13px; margin-top:14px}
+
+  @media(max-width:560px){ body{padding:16px 10px} .sheet{padding:30px 20px 26px} }
+
+  @media print{
+    @page{ size:A4; margin:12mm }
+    body{background:#fff; padding:0; font-size:9.6pt; line-height:1.4}
+    .toolbar{display:none}
+    .sheet{max-width:none; box-shadow:none; border:none; padding:0; margin:0}
+    .sheet::before{display:none}
+    a{color:#000; text-decoration:none}
+    .head{padding-bottom:10px; margin-bottom:12px}
+    .head h1{font-size:20pt} .seal{width:46px;height:46px;font-size:16px}
+    .intro{font-size:9.4pt; margin-bottom:10px}
+    .item{padding:8px 0; gap:11px}
+    .item h3{font-size:10.6pt} .item p{font-size:9.2pt} .item .n{font-size:15pt}
+    .item .box{width:18px;height:18px} .item .who{font-size:8pt}
+    .notreq{margin-top:12px; padding:12px 14px} .notreq h2{font-size:11.5pt} .notreq p{font-size:9pt}
+    .callout{margin-top:12px; padding:11px 14px; font-size:9pt}
+    .url{font-size:12pt; margin-top:12px}
+    .disclaimer{font-size:7.6pt; padding-top:10px; margin-top:10px}
+    .item,.notreq,.callout,.head{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <a href="index.html">&larr; Back to Venue-Ready</a>
+  <button class="btn" id="printBtn" type="button">Print / save as PDF</button>
+</div>
+
+<div class="sheet">
+  <div class="head">
+    <div class="seal">VR</div>
+    <div>
+      <div class="eyebrow">Free &middot; standard tier &middot; start here</div>
+      <h1>The starter checklist</h1>
+    </div>
+  </div>
+
+  <p class="intro">Your venue is in scope at <strong>standard tier</strong> &mdash; the lighter set of duties. That means seven things, and no more than seven. Work down this list in order; each one builds on the last. <strong>Three of them cost you nothing but time, and all seven can be done without buying anything from anyone</strong> &mdash; the official guidance is free on GOV.UK. What a pack buys you is the drafting, not permission.</p>
+
+  <div class="item">
+    <span class="box"></span>
+    <div class="n">1</div>
+    <div>
+      <h3>Write down the number, and how you got it</h3>
+      <p>The peak number reasonably expected at the same time at your busiest realistic occasion &mdash; counting visitors, staff, volunteers and performers. Note where the figure came from (seating count, fire risk assessment, last year's carol service). This one sentence is the foundation of everything below, and the first thing anyone will ask you about.</p>
+    </div>
+    <span class="who free">Free</span>
+  </div>
+
+  <div class="item">
+    <span class="box"></span>
+    <div class="n">2</div>
+    <div>
+      <h3>Name the responsible person, and minute it</h3>
+      <p>It is whoever controls the premises &mdash; usually the body rather than an individual: the PCC, the trustees, the parish council. Record the decision in the minutes so it survives a change of committee. The duty cannot be delegated away to a hirer, a caretaker or a consultant.</p>
+    </div>
+    <span class="who free">Free</span>
+  </div>
+
+  <div class="item">
+    <span class="box"></span>
+    <div class="n">3</div>
+    <div>
+      <h3>Get your notification details ready</h3>
+      <p>You will need to notify the Security Industry Authority once its portal opens ahead of commencement. Put the details in one place now &mdash; premises name and address, who the responsible person is, and a contact email that will still be monitored in two years' time. It takes ten minutes when you already have the answers.</p>
+    </div>
+    <span class="who free">Free</span>
+  </div>
+
+  <div class="item">
+    <span class="box"></span>
+    <div class="n">4</div>
+    <div>
+      <h3>Write the four procedures</h3>
+      <p><strong>Evacuation</strong> &mdash; getting people out, and where they gather. <strong>Invacuation</strong> &mdash; bringing people in and securing them, when out is the more dangerous direction. <strong>Lockdown</strong> &mdash; which doors lock, who has the key, how you stop people entering. <strong>Communication</strong> &mdash; how you raise the alarm among yourselves without causing panic, and who calls 999. They have to be proportionate to your building, and they have to be capable of being carried out by the people actually on duty &mdash; not by staff you don't have.</p>
+    </div>
+    <span class="who paid">The drafting is what a pack saves you</span>
+  </div>
+
+  <div class="item">
+    <span class="box"></span>
+    <div class="n">5</div>
+    <div>
+      <h3>Make sure your people know them</h3>
+      <p>This is an explicit ask in the Act, not an optional extra: staff and volunteers must be made aware of the procedures so they can carry them out. A twenty-minute briefing at a meeting you were having anyway is enough. Write down who attended and when &mdash; that record is your evidence, and it is worth more than any certificate.</p>
+    </div>
+    <span class="who paid">Free ACT training on ProtectUK, or a ready-made briefing</span>
+  </div>
+
+  <div class="item">
+    <span class="box"></span>
+    <div class="n">6</div>
+    <div>
+      <h3>Put the review in the diary</h3>
+      <p>Once a year, walk round and check the plan still fits the building &mdash; and sooner if something material changes. Twenty minutes. Often the honest answer is "nothing has changed", and recording that is a complete review.</p>
+    </div>
+    <span class="who free">Free</span>
+  </div>
+
+  <div class="item">
+    <span class="box"></span>
+    <div class="n">7</div>
+    <div>
+      <h3>Talk to anyone you share the building with</h3>
+      <p>Shared premises and regular hirers: agree who leads in an emergency and make sure the procedures line up rather than contradict each other. Give hirers a single page they can act on &mdash; most of them will never have thought about it.</p>
+    </div>
+    <span class="who paid">One page in your booking pack</span>
+  </div>
+
+  <div class="notreq">
+    <h2>What is <em>not</em> on the list</h2>
+    <p>CCTV &middot; barriers &middot; bag searches &middot; security staff &middot; a risk assessment submitted to anyone &middot; a paid consultant &middot; a course certificate. None of these are standard-tier requirements. If a provider is selling you one of them as "required by Martyn's Law", ask which of the seven it satisfies &mdash; and watch what happens.</p>
+  </div>
+
+  <div class="callout">
+    <strong>You can do all of this yourself, for nothing.</strong> The statutory guidance is free at <a href="https://www.gov.uk">GOV.UK</a>, and free ACT awareness training is available at <a href="https://www.protectuk.police.uk">ProtectUK</a>. If you would rather not spend the weekend drafting, that is what our pack is for &mdash; and if you would rather spend it, we would genuinely rather you did that than bought something you don't need.
+  </div>
+
+  <div class="url">venue-ready.co.uk</div>
+
+  <div class="disclaimer">
+    Venue-Ready provides independent template guidance based on the Terrorism (Protection of Premises) Act 2025 and the Home Office statutory guidance (April 2026). It is not legal advice and is not endorsed by the Home Office or the Security Industry Authority. Working through this checklist is not a certificate of compliance &mdash; no such certificate exists in law. The responsible person retains all legal duties under the Act. Official guidance is free at GOV.UK and ProtectUK.
+  </div>
+</div>
+
+<script>
+  document.getElementById('printBtn').onclick=function(){ window.print(); };
+</script>
+</body>
+</html>

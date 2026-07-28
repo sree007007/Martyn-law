@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enhanced tier — what to read next — Venue-Ready</title>
+<meta name="description" content="At 800 or more people, non-worship venues carry heavier duties than our pack covers. Here is what to read, what to ask for, and how not to be oversold.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#1E3D2F; --green-deep:#152B21; --paper:#FAF7F0; --paper-edge:#EFE9DC;
+    --ink:#22271F; --brass:#B08D3E; --brass-soft:#C9A85C; --amber:#8A5A16; --ok:#2F6B3A;
+    --line:#D8D2C4;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  @media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
+  body{font-family:'Atkinson Hyperlegible',system-ui,sans-serif; font-size:16px; line-height:1.55; color:var(--ink); background:var(--paper-edge); padding:26px 16px}
+  h1,h2,h3{font-family:'Young Serif',Georgia,serif; font-weight:400; line-height:1.15}
+  a{color:var(--green)}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--brass); outline-offset:3px; border-radius:3px}
+
+  .toolbar{max-width:820px; margin:0 auto 18px; display:flex; gap:12px; justify-content:space-between; align-items:center; flex-wrap:wrap}
+  .toolbar a{font-size:15px; text-decoration:none; font-weight:700}
+  .btn{display:inline-block; font-weight:700; font-size:16px; text-decoration:none; border-radius:6px; padding:11px 22px; cursor:pointer; border:2px solid transparent; font-family:inherit; background:var(--brass); color:#fff}
+  .btn:hover{background:#9a7a33}
+
+  .sheet{max-width:820px; margin:0 auto 20px; background:#fff; border:1px solid var(--line); box-shadow:0 8px 26px rgba(34,39,31,.12); padding:40px 44px 34px; position:relative}
+  .sheet::before{content:""; position:absolute; left:0; right:0; top:0; height:8px; background:repeating-linear-gradient(90deg, var(--brass) 0 46px, transparent 46px 60px)}
+
+  .head{display:flex; align-items:center; gap:16px; border-bottom:2px solid var(--line); padding-bottom:18px; margin-bottom:18px}
+  .seal{width:60px; height:60px; border-radius:50%; background:var(--green); color:var(--brass-soft); display:flex; align-items:center; justify-content:center; font-family:'Young Serif',serif; font-size:21px; border:3px solid var(--brass); flex:none}
+  .head .eyebrow{font-size:12.5px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; color:var(--amber)}
+  .head h1{font-size:28px; color:var(--green); margin-top:2px}
+
+  .honest{background:var(--green); color:var(--paper); border-radius:8px; padding:20px 22px; margin-bottom:20px}
+  .honest h2{color:var(--brass-soft); font-size:19px; margin-bottom:8px}
+  .honest p{font-size:15px; color:#E7E3D6; margin-bottom:8px}
+  .honest p:last-child{margin-bottom:0}
+
+  h2.block{font-size:20px; color:var(--green); margin:22px 0 10px}
+  .lead-p{font-size:15px; color:#3D443A; margin-bottom:14px}
+
+  .duty{display:grid; grid-template-columns:auto 1fr; gap:14px; padding:11px 0; border-bottom:1px solid var(--paper-edge); break-inside:avoid}
+  .duty .n{width:30px; height:30px; border-radius:6px; background:var(--green); color:var(--brass-soft); font-family:'Young Serif',serif; font-size:16px; display:flex; align-items:center; justify-content:center; flex:none}
+  .duty > div{min-width:0}
+  .duty h3{font-size:16.5px; color:var(--green); margin-bottom:3px}
+  .duty p{font-size:14.5px; color:#3D443A}
+
+  .read{display:grid; grid-template-columns:auto 1fr; gap:14px; padding:11px 0; border-bottom:1px solid var(--paper-edge); break-inside:avoid}
+  .read .box{width:22px; height:22px; border:2px solid var(--green); border-radius:3px; flex:none; margin-top:3px}
+  .read > div{min-width:0}
+  .read h3{font-size:16.5px; color:var(--green); margin-bottom:3px}
+  .read p{font-size:14.5px; color:#3D443A}
+  .read .where{font-size:13.5px; font-weight:700; color:var(--amber); display:block; margin-top:4px; overflow-wrap:anywhere; word-break:break-word}
+
+  .ask{margin-top:8px; padding-left:0; list-style:none}
+  .ask li{font-size:14.5px; padding:6px 0 6px 24px; position:relative; color:#3D443A; break-inside:avoid}
+  .ask li::before{content:"\2014"; position:absolute; left:0; color:var(--brass); font-weight:700}
+
+  .callout{margin-top:18px; background:var(--paper-edge); border-left:5px solid var(--brass); border-radius:0 6px 6px 0; padding:14px 16px; font-size:14.5px; break-inside:avoid}
+  .callout strong{color:var(--green)}
+  .url{text-align:center; font-family:'Young Serif',serif; font-size:18px; color:var(--green); margin-top:16px}
+  .disclaimer{font-size:11.5px; color:#5A6053; line-height:1.5; border-top:1px solid var(--line); padding-top:13px; margin-top:14px}
+
+  @media(max-width:560px){ body{padding:16px 10px} .sheet{padding:30px 20px 26px} }
+
+  @media print{
+    @page{ size:A4; margin:12mm }
+    body{background:#fff; padding:0; font-size:9.6pt; line-height:1.4}
+    .toolbar{display:none}
+    .sheet{max-width:none; box-shadow:none; border:none; padding:0; margin:0}
+    .sheet::before{display:none}
+    a{color:#000; text-decoration:none}
+    .head{padding-bottom:10px; margin-bottom:12px}
+    .head h1{font-size:19pt} .seal{width:44px;height:44px;font-size:15px}
+    .honest{padding:14px 16px; margin-bottom:14px} .honest h2{font-size:12pt} .honest p{font-size:9.2pt}
+    h2.block{font-size:13pt; margin:14px 0 8px}
+    .lead-p{font-size:9.2pt; margin-bottom:10px}
+    .duty, .read{padding:8px 0; gap:11px}
+    .duty h3, .read h3{font-size:10.4pt} .duty p, .read p{font-size:9pt}
+    .duty .n{width:26px;height:26px;font-size:13px} .read .box{width:18px;height:18px}
+    .read .where{font-size:8.6pt}
+    .ask li{font-size:9pt; padding:4px 0 4px 22px}
+    .callout{margin-top:12px; padding:11px 14px; font-size:9pt}
+    .url{font-size:12pt; margin-top:12px}
+    .disclaimer{font-size:7.6pt; padding-top:10px; margin-top:10px}
+    .duty,.read,.callout,.honest,.head{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <a href="index.html">&larr; Back to Venue-Ready</a>
+  <button class="btn" id="printBtn" type="button">Print / save as PDF</button>
+</div>
+
+<div class="sheet">
+  <div class="head">
+    <div class="seal">VR</div>
+    <div>
+      <div class="eyebrow">Free &middot; enhanced tier &middot; what to read next</div>
+      <h1>You need more than a pack</h1>
+    </div>
+  </div>
+
+  <div class="honest">
+    <h2>Why we are sending you away</h2>
+    <p>Your check came out at 800 or more people at a realistic busiest occasion, and your venue is not a place of worship. That puts you in the <strong>enhanced tier</strong>, which carries materially heavier duties than the standard tier our documents are written for.</p>
+    <p>We could sell you our pack anyway. It would be a foundation and it would not be sufficient, and you would find that out at the worst possible moment. So here is the reading list instead, free, with nothing to buy from us at the end of it.</p>
+    <p><strong>One thing worth checking first:</strong> places of worship remain in the standard tier whatever their capacity. If your venue is a church, chapel or other place of worship, run the check again with that selected &mdash; the answer changes, and the lighter duties apply to you.</p>
+  </div>
+
+  <h2 class="block">What the enhanced tier adds</h2>
+  <p class="lead-p">Everything the standard tier asks for still applies. On top of it, and stated here in outline only &mdash; the guidance is the authority, not this sheet:</p>
+
+  <div class="duty">
+    <div class="n">1</div>
+    <div>
+      <h3>Public protection measures, not just procedures</h3>
+      <p>Standard tier asks you to have plans. Enhanced tier also asks you to consider measures that reduce vulnerability and the risk of physical harm &mdash; monitoring, physical safety and security, and how the premises are secured &mdash; so far as is reasonably practicable.</p>
+    </div>
+  </div>
+
+  <div class="duty">
+    <div class="n">2</div>
+    <div>
+      <h3>A designated senior individual</h3>
+      <p>Where the responsible person is a body rather than a person, a named senior individual carries responsibility for the duties being met. This is a real accountability, and worth agreeing at board level rather than delegating downwards.</p>
+    </div>
+  </div>
+
+  <div class="duty">
+    <div class="n">3</div>
+    <div>
+      <h3>A documented assessment, provided to the regulator</h3>
+      <p>Enhanced-tier premises must document how the measures and procedures reduce risk, and provide that document to the Security Industry Authority. This is the point people most often get wrong about the standard tier &mdash; at standard tier there is no document to submit to anyone. At enhanced tier there is.</p>
+    </div>
+  </div>
+
+  <div class="duty">
+    <div class="n">4</div>
+    <div>
+      <h3>A different penalty regime</h3>
+      <p>Standard-tier penalties reach up to &pound;10,000. Enhanced-tier penalties are of a different order &mdash; reported as up to &pound;18 million or 5% of qualifying worldwide revenue. Check the current figures and the definition of qualifying worldwide revenue in the guidance before you quote them to your board.</p>
+      <!-- VERIFY: enhanced-tier penalty ceiling (£18m / 5% qualifying worldwide revenue) and the qualifying-worldwide-revenue definition introduced by the Commencement No.2 Regulations (June 2026). Confirm against GOV.UK before this page goes live. -->
+    </div>
+  </div>
+
+  <h2 class="block">What to read, in this order</h2>
+
+  <div class="read">
+    <span class="box"></span>
+    <div>
+      <h3>The statutory guidance &mdash; the enhanced-tier chapters</h3>
+      <p>Published by the Home Office and free. Read the enhanced-tier sections in full rather than a provider's summary of them; summaries are where the mis-selling starts.</p>
+      <span class="where">Search GOV.UK for: Terrorism (Protection of Premises) Act 2025 statutory guidance</span>
+    </div>
+  </div>
+
+  <div class="read">
+    <span class="box"></span>
+    <div>
+      <h3>The Act itself, Part 1 and Schedule 1</h3>
+      <p>Worth an hour if you are the designated senior individual. Schedule 1 is where qualifying premises and uses are defined, and it settles most arguments about whether you are in scope at all.</p>
+      <span class="where">legislation.gov.uk &mdash; Terrorism (Protection of Premises) Act 2025</span>
+    </div>
+  </div>
+
+  <div class="read">
+    <span class="box"></span>
+    <div>
+      <h3>The regulator's own material</h3>
+      <p>The Security Industry Authority is the regulator, and has said its approach will be supportive and proportionate. Its enforcement guidance and the notification process are the practical detail you will actually be judged against.</p>
+      <span class="where">gov.uk/government/organisations/security-industry-authority</span>
+      <!-- VERIFY: SIA enforcement guidance was expected autumn 2026 and the notification portal early 2027. Check status before quoting timings publicly. -->
+    </div>
+  </div>
+
+  <div class="read">
+    <span class="box"></span>
+    <div>
+      <h3>ProtectUK, for the training side</h3>
+      <p>Free ACT awareness training and practical counter-terrorism material for staff. Genuinely free, genuinely official, and it covers the awareness element without a purchase.</p>
+      <span class="where">protectuk.police.uk</span>
+    </div>
+  </div>
+
+  <h2 class="block">If you bring in a specialist, ask these</h2>
+  <ul class="ask">
+    <li>Which specific requirement of the Act does each thing you are proposing satisfy? Anything that cannot be mapped to one is a want, not a duty.</li>
+    <li>What are you assuming our peak occupancy is, and where did that number come from?</li>
+    <li>What will we still have to do ourselves after you have finished?</li>
+    <li>What does the documented assessment look like, and who signs it?</li>
+    <li>What happens at renewal &mdash; is there an annual fee, and what does it actually buy?</li>
+  </ul>
+
+  <div class="callout">
+    <strong>Two warnings that apply at any tier.</strong> Nobody can sell you a "compliance certificate" &mdash; no such thing exists in this law. And neither the Home Office nor the Security Industry Authority endorses any provider, product or course, including ours. If someone tells you otherwise, that is the whole answer about them. Our free mis-selling checklist covers the rest: venue-ready.co.uk/checklist
+  </div>
+
+  <div class="url">venue-ready.co.uk</div>
+
+  <div class="disclaimer">
+    Venue-Ready provides independent template guidance based on the Terrorism (Protection of Premises) Act 2025 and the Home Office statutory guidance (April 2026). This sheet is a reading list, not advice on your duties, and our documents are written for standard-tier venues &mdash; they are not sufficient for enhanced-tier premises. It is not legal advice and is not endorsed by the Home Office or the Security Industry Authority. The responsible person retains all legal duties under the Act. Official guidance is free at GOV.UK and ProtectUK.
+  </div>
+</div>
+
+<script>
+  document.getElementById('printBtn').onclick=function(){ window.print(); };
+</script>
+</body>
+</html>

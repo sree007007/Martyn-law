@@ -46,3 +46,23 @@
   from = "/review-sheet"
   to = "/review-sheet.html"
   status = 200
+
+[[redirects]]
+  from = "/out-of-scope-letter"
+  to = "/out-of-scope-letter.html"
+  status = 200
+
+[[redirects]]
+  from = "/starter-checklist"
+  to = "/starter-checklist.html"
+  status = 200
+
+[[redirects]]
+  from = "/enhanced-tier-reading-list"
+  to = "/enhanced-tier-reading-list.html"
+  status = 200
+
+[[redirects]]
+  from = "/committee-one-pager"
+  to = "/committee-one-pager.html"
+  status = 200

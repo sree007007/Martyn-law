@@ -8,7 +8,11 @@ Static site, no build step. `index.html` is the whole marketing and conversion f
 | `privacy.html` · `terms.html` | Legal pages, linked from every footer. |
 | `training.html` | £49/£199 fulfilment: video, quiz, printable Briefing Completion Record. |
 | `checklist.html` | Free printable Mis-selling Checklist (A4). |
-| `review-sheet.html` | Free printable 20-minute annual review walk-through (A4, prints on one sheet, both sides). |
+| `out-of-scope-letter.html` | Free scope review record for venues under the threshold (1 side of A4). |
+| `starter-checklist.html` | Free standard-tier starter checklist (1 sheet, both sides). |
+| `enhanced-tier-reading-list.html` | Free reading list for enhanced-tier venues we refer away (1 sheet, both sides). |
+| `committee-one-pager.html` | Free summary to circulate with a PCC/council agenda (1 side of A4). |
+| `review-sheet.html` | Free printable 20-minute annual review walk-through (1 sheet, both sides). |
 | `content/` | Email copy that isn't a web page — currently the annual review automation. |
 | `netlify.toml` | Security headers and pretty-URL rewrites. |
 

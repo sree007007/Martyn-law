@@ -63,10 +63,24 @@ Free lead magnets: scope calculator, out-of-scope letter, Mis-selling Checklist.
 
 ## Files in this repo
 `index.html` (the site) · `privacy.html` · `terms.html` · `training.html` (£49/£199
-fulfilment: video, quiz, Briefing Completion Record) · `checklist.html` (printable
-Mis-selling Checklist) · `review-sheet.html` (printable annual review walk-through) ·
-`netlify.toml` · `favicon.svg` · `og-image.png` (+ `og-image.html` source) ·
-`content/annual-review-reminder-email.md` (copy for the MailerLite automation).
+fulfilment: video, quiz, Briefing Completion Record) · `netlify.toml` · `favicon.svg` ·
+`og-image.png` (+ `og-image.html` source) · `content/annual-review-reminder-email.md`
+(copy for the MailerLite automation).
+
+**The six free printables** — each one is what a capture on the site promises, and each is
+also linked directly so nobody has to hand over an email to get something we called free:
+
+| Page | The list it serves | Prints as |
+|---|---|---|
+| `out-of-scope-letter.html` | `out-of-scope` | 1 side of A4 |
+| `starter-checklist.html` | `standard` | 1 sheet, both sides |
+| `enhanced-tier-reading-list.html` | `enhanced` | 1 sheet, both sides |
+| `committee-one-pager.html` | `committee-onepager` | 1 side of A4 |
+| `review-sheet.html` | `annual-review` | 1 sheet, both sides |
+| `checklist.html` | mis-selling checklist (`LEAD_MAGNET_URL`) | 1 side of A4 |
+
+If you change one of these, check its print pagination — the page counts above are the spec,
+not an accident, and several are tuned to the millimetre.
 
 ## Current TODOs
 
@@ -96,13 +110,29 @@ Mis-selling Checklist) · `review-sheet.html` (printable annual review walk-thro
 - `training.html`, `checklist.html`, `review-sheet.html`.
 - Annual review reminder (requirement 6): capture in #minimum, printable sheet, and the
   yearly email drafted in `content/annual-review-reminder-email.md`.
+- All five promised lead magnets now exist as pages (see the table above). Every capture
+  carries a hidden `list` field, and every verdict offers the same material as a direct
+  print link — the free thing stays free whether or not an email is given.
 
 ### Still to build
 7. Privacy-friendly analytics (Plausible or GoatCounter). No cookie banner needed — and
    the privacy notice currently says we run no tracking cookies, so keep it that way.
-8. Design the Mis-selling Checklist as a hosted PDF if the email platform needs one;
-   `checklist.html` already prints to A4 and is what `LEAD_MAGNET_URL` points at.
+8. Export the six printables to hosted PDFs if MailerLite needs files to attach. Each page
+   prints correctly already — "Print / save as PDF" on the page is the export.
 9. Later: `/webinar` page for association bookings; printable one-page PDF of the scope result.
+
+### Two things flagged to the owner, not yet actioned
+- **"MOST VENUES CHOOSE THIS"** on the Complete Kit card (`.price.feat::before`) is social
+  proof we have not earned — there are no customers yet. Flagged; the owner decides.
+- The Complete Kit and several FAQ answers describe the **narrated training video as
+  available**. It is unrecorded. Either record it before launch or demote the Kit and mark
+  training as coming later — do not list an unbuilt product.
+
+### Legal facts awaiting verification
+Marked `<!-- VERIFY -->` in `enhanced-tier-reading-list.html`: the enhanced-tier penalty
+ceiling (£18m / 5% of qualifying worldwide revenue), the qualifying-worldwide-revenue
+definition from the Commencement No.2 Regulations, and the expected timing of SIA
+enforcement guidance and the notification portal. Check GOV.UK before that page goes live.
 
 ### Keep the spine intact
 Keep the `#minimum` section as the site's spine — if products change, update the seven-row

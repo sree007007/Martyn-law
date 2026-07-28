@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Martyn's Law — the one-page summary for your committee — Venue-Ready</title>
+<meta name="description" content="A free one-page summary to circulate with your PCC, trustee or council agenda: what the law asks, what it costs, and suggested wording for the minutes.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#1E3D2F; --green-deep:#152B21; --paper:#FAF7F0; --paper-edge:#EFE9DC;
+    --ink:#22271F; --brass:#B08D3E; --brass-soft:#C9A85C; --amber:#8A5A16; --ok:#2F6B3A;
+    --line:#D8D2C4;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  @media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
+  body{font-family:'Atkinson Hyperlegible',system-ui,sans-serif; font-size:16px; line-height:1.5; color:var(--ink); background:var(--paper-edge); padding:26px 16px}
+  h1,h2,h3{font-family:'Young Serif',Georgia,serif; font-weight:400; line-height:1.15}
+  a{color:var(--green)}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--brass); outline-offset:3px; border-radius:3px}
+
+  .toolbar{max-width:820px; margin:0 auto 18px; display:flex; gap:12px; justify-content:space-between; align-items:center; flex-wrap:wrap}
+  .toolbar a{font-size:15px; text-decoration:none; font-weight:700}
+  .btn{display:inline-block; font-weight:700; font-size:16px; text-decoration:none; border-radius:6px; padding:11px 22px; cursor:pointer; border:2px solid transparent; font-family:inherit; background:var(--brass); color:#fff}
+  .btn:hover{background:#9a7a33}
+
+  .sheet{max-width:820px; margin:0 auto 20px; background:#fff; border:1px solid var(--line); box-shadow:0 8px 26px rgba(34,39,31,.12); padding:36px 40px 30px; position:relative}
+  .sheet::before{content:""; position:absolute; left:0; right:0; top:0; height:8px; background:repeating-linear-gradient(90deg, var(--brass) 0 46px, transparent 46px 60px)}
+
+  .head{display:flex; align-items:center; gap:14px; border-bottom:2px solid var(--line); padding-bottom:14px; margin-bottom:14px}
+  .seal{width:52px; height:52px; border-radius:50%; background:var(--green); color:var(--brass-soft); display:flex; align-items:center; justify-content:center; font-family:'Young Serif',serif; font-size:19px; border:3px solid var(--brass); flex:none}
+  .head .eyebrow{font-size:12px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; color:var(--amber)}
+  .head h1{font-size:25px; color:var(--green); margin-top:2px}
+
+  .agenda{display:grid; grid-template-columns:1fr 1fr; gap:6px 20px; font-size:13.5px; color:#3D443A; margin-bottom:14px}
+  @media(max-width:560px){ .agenda{grid-template-columns:1fr} }
+  .agenda span{font-weight:700; color:var(--green)}
+  .agenda .rule{display:inline-block; border-bottom:1.5px solid var(--line); min-width:120px}
+
+  p.body{font-size:14.5px; margin-bottom:11px; color:#3D443A}
+  p.body strong{color:var(--green)}
+
+  h2.block{font-size:16.5px; color:var(--green); margin:14px 0 7px}
+
+  .tablewrap{overflow-x:auto}
+  table{width:100%; min-width:430px; border-collapse:collapse; font-size:13.5px}
+  th{background:var(--green); color:var(--paper); text-align:left; font-size:12px; letter-spacing:.05em; text-transform:uppercase; padding:6px 9px; border:1px solid var(--green)}
+  td{border:1px solid var(--line); padding:5px 9px; vertical-align:top}
+  td.c{white-space:nowrap; font-weight:700; color:var(--ok)}
+  td.c.paid{color:var(--amber)}
+
+  .two{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:12px}
+  @media(max-width:640px){ .two{grid-template-columns:1fr} }
+  .box{border:1px solid var(--line); border-left:5px solid var(--brass); border-radius:0 6px 6px 0; padding:11px 13px; break-inside:avoid}
+  .box h3{font-size:14.5px; color:var(--green); margin-bottom:5px}
+  .box p, .box li{font-size:13.5px; color:#3D443A}
+  .box ul{list-style:none; margin-top:3px}
+  .box li{padding:3px 0 3px 18px; position:relative}
+  .box li::before{content:"\2014"; position:absolute; left:0; color:var(--brass)}
+
+  .motion{margin-top:12px; background:var(--paper-edge); border-radius:6px; padding:13px 15px; break-inside:avoid}
+  .motion h3{font-size:14.5px; color:var(--green); margin-bottom:6px}
+  .motion p{font-size:13.5px; font-style:italic; color:#3D443A}
+
+  .disclaimer{font-size:10.5px; color:#5A6053; line-height:1.45; border-top:1px solid var(--line); padding-top:11px; margin-top:13px}
+  .url{text-align:center; font-family:'Young Serif',serif; font-size:16px; color:var(--green); margin-top:12px}
+
+  @media(max-width:560px){ body{padding:16px 10px} .sheet{padding:28px 18px 24px} }
+
+  @media print{
+    @page{ size:A4; margin:11mm }
+    body{background:#fff; padding:0; font-size:9pt; line-height:1.36}
+    .toolbar{display:none}
+    .sheet{max-width:none; box-shadow:none; border:none; padding:0; margin:0}
+    .sheet::before{display:none}
+    a{color:#000; text-decoration:none}
+    .head{padding-bottom:10px; margin-bottom:10px}
+    .head h1{font-size:17pt} .seal{width:40px;height:40px;font-size:14px}
+    .agenda{font-size:8.6pt; margin-bottom:10px}
+    p.body{font-size:8.8pt; margin-bottom:7px}
+    h2.block{font-size:11pt; margin:10px 0 5px}
+    table{font-size:8.4pt} th{padding:4px 7px; font-size:7.8pt} td{padding:3px 7px}
+    .two{gap:10px; margin-top:9px}
+    .box{padding:9px 11px} .box h3{font-size:9.4pt} .box p,.box li{font-size:8.4pt}
+    .motion{margin-top:9px; padding:10px 12px} .motion h3{font-size:9.4pt} .motion p{font-size:8.4pt}
+    .url{font-size:11pt; margin-top:9px}
+    .disclaimer{font-size:7pt; padding-top:9px; margin-top:9px}
+    .tablewrap{overflow:visible} table{min-width:0}
+    .box,.motion,table,.head{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <a href="index.html">&larr; Back to Venue-Ready</a>
+  <button class="btn" id="printBtn" type="button">Print / save as PDF</button>
+</div>
+
+<div class="sheet">
+  <div class="head">
+    <div class="seal">VR</div>
+    <div>
+      <div class="eyebrow">Free &middot; circulate with the agenda</div>
+      <h1>Martyn's Law: what this venue has to do</h1>
+    </div>
+  </div>
+
+  <div class="agenda">
+    <div><span>Venue:</span> <span class="rule"></span></div>
+    <div><span>Meeting date:</span> <span class="rule"></span></div>
+    <div><span>Prepared by:</span> <span class="rule"></span></div>
+    <div><span>Our peak realistic attendance:</span> <span class="rule"></span></div>
+  </div>
+
+  <p class="body"><strong>What it is.</strong> The Terrorism (Protection of Premises) Act 2025 &mdash; "Martyn's Law", named for Martyn Hett, one of the 22 people killed at Manchester Arena in 2017. It asks venues where a good number of people may gather to be prepared to protect them. <strong>Duties come into force in Spring 2027</strong>, so there is time to do this calmly.</p>
+
+  <p class="body"><strong>Does it apply to us?</strong> One number decides it: could <strong>200 or more people</strong> reasonably be present at the same time at our busiest realistic occasion &mdash; counting visitors, staff, volunteers and performers? Under 200, the duties do not apply and the sensible action is to record that finding and review it annually. From 200 to 799 we are in the <strong>standard tier</strong>, the lighter set of duties. Places of worship stay in the standard tier whatever their capacity.</p>
+
+  <h2 class="block">If we are in scope, this is the whole of it</h2>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th style="width:62%">What the law asks of a standard-tier venue</th><th style="width:38%">What it costs us</th></tr></thead>
+    <tbody>
+      <tr><td>1 &nbsp;Assess honestly whether we are in scope, and write the number down</td><td class="c">Nothing &mdash; free checker</td></tr>
+      <tr><td>2 &nbsp;Name the responsible person (the PCC, trustees or council)</td><td class="c">Nothing &mdash; a minute</td></tr>
+      <tr><td>3 &nbsp;Notify the Security Industry Authority once its portal opens</td><td class="c">Nothing &mdash; ten minutes</td></tr>
+      <tr><td>4 &nbsp;Have four procedures: evacuation, invacuation, lockdown, communication</td><td class="c paid">Volunteer drafting time, or a template pack</td></tr>
+      <tr><td>5 &nbsp;Make sure staff and volunteers know them</td><td class="c paid">A 20-minute briefing</td></tr>
+      <tr><td>6 &nbsp;Review the procedures annually</td><td class="c">Nothing &mdash; 20 minutes a year</td></tr>
+      <tr><td>7 &nbsp;Coordinate with anyone we share the building with, and our hirers</td><td class="c paid">One page in the booking pack</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="two">
+    <div class="box">
+      <h3>What the law does not ask for</h3>
+      <p>CCTV, barriers, bag searches, security staff, a risk assessment submitted to anyone, a paid consultant, or a course certificate. None of these are standard-tier requirements, and no "compliance certificate" exists in this law. If a provider claims otherwise, ask which of the seven items above it satisfies.</p>
+    </div>
+    <div class="box">
+      <h3>What it would cost us</h3>
+      <ul>
+        <li><strong>Do it ourselves: &pound;0.</strong> The statutory guidance is free on GOV.UK and free awareness training is on ProtectUK. It costs a weekend of someone's time.</li>
+        <li><strong>Template document pack: &pound;149 once.</strong> Buys the drafting, not permission &mdash; four procedures, grab-card and hirer sheet.</li>
+        <li><strong>Documents and volunteer training: &pound;199 once.</strong> Adds the briefing and the records for our evidence log.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box" style="margin-top:12px">
+    <h3>What happens if we do nothing</h3>
+    <p>From Spring 2027 the Security Industry Authority can require compliance and issue penalties of <strong>up to &pound;10,000</strong> for standard-tier venues, with daily penalties for continuing breaches. The regulator has said its approach will be supportive and proportionate &mdash; particularly with venues that have made a start. The more practical risk is the one nobody invoices for: an incident in a building where the people on duty had never been told what to do.</p>
+  </div>
+
+  <div class="motion">
+    <h3>Suggested wording for the minutes</h3>
+    <p>"The meeting considered the requirements of the Terrorism (Protection of Premises) Act 2025. It was noted that the peak number reasonably expected to be present at the busiest occasion is [number], placing the premises [in the standard tier / out of scope]. [Name] was confirmed as the responsible person. It was agreed that the four public protection procedures would be prepared and adopted by [date], that volunteers would be briefed, and that the position would be reviewed annually."</p>
+  </div>
+
+  <div class="url">venue-ready.co.uk</div>
+
+  <div class="disclaimer">
+    Prepared using material from Venue-Ready, which provides independent template guidance based on the Terrorism (Protection of Premises) Act 2025 and the Home Office statutory guidance (April 2026). It is not legal advice and is not endorsed by the Home Office or the Security Industry Authority. The responsible person retains all legal duties under the Act. Official guidance is free at GOV.UK and ProtectUK. Dates and regulator processes may change &mdash; check GOV.UK before relying on timings.
+  </div>
+</div>
+
+<script>
+  document.getElementById('printBtn').onclick=function(){ window.print(); };
+</script>
+</body>
+</html>

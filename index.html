@@ -526,10 +526,12 @@
         <h3>Taking it to the committee</h3>
         <p>Most venues decide this at a PCC or council meeting. We'll send you a free one-page summary to circulate with the agenda &mdash; what the law requires, what it costs, and what happens if you do nothing. No obligation to buy anything.</p>
         <div class="capture" data-form="committee-onepager">
+          <input type="hidden" name="list" value="committee-onepager">
           <input type="email" placeholder="you@example.org" aria-label="Email address for the committee summary">
           <button class="btn btn-quiet" type="button" style="font-size:15.5px;padding:11px 18px">Send me the committee one-pager</button>
         </div>
         <p class="msg" data-msg></p>
+        <p style="font-size:14.5px;color:var(--muted);margin-top:10px">Or skip the email: <a href="committee-one-pager.html">print the one-pager now</a>.</p>
       </div>
 
       <div class="bi">
@@ -662,7 +664,7 @@
   <div class="wrap">
     <div><strong>Venue-Ready</strong> is a trading name of [Company name &mdash; to be added] Ltd, registered in England &amp; Wales, company no. [company number &mdash; to be added]. Registered office: [registered office &mdash; to be added]. ICO registration: [ICO number &mdash; to be added].</div>
     <div>Venue-Ready provides independent template guidance based on the Terrorism (Protection of Premises) Act 2025 and the Home Office statutory guidance (April 2026). It is not legal advice and is not endorsed by the Home Office or the Security Industry Authority. The responsible person retains all legal duties under the Act. Official guidance is free at GOV.UK and ProtectUK.</div>
-    <div>Free, no email needed: <a href="checklist.html">Mis-selling checklist</a> &middot; <a href="review-sheet.html">Annual review sheet</a></div>
+    <div>Free, no email needed: <a href="checklist.html">Mis-selling checklist</a> &middot; <a href="starter-checklist.html">Starter checklist</a> &middot; <a href="review-sheet.html">Annual review sheet</a> &middot; <a href="committee-one-pager.html">Committee one-pager</a> &middot; <a href="out-of-scope-letter.html">Scope review record</a> &middot; <a href="enhanced-tier-reading-list.html">Enhanced-tier reading list</a></div>
     <div>Contact: <a href="mailto:hello@venue-ready.co.uk">hello@venue-ready.co.uk</a> &middot; <a href="privacy.html">Privacy notice</a> &middot; <a href="terms.html">Terms of sale</a> &middot; &copy; 2026</div>
   </div>
 </footer>
@@ -779,12 +781,20 @@
   document.getElementById('minus').onclick = function(){ hc.value = Math.max(0, (parseInt(hc.value) || 0) - 25); };
   document.getElementById('plus').onclick  = function(){ hc.value = Math.min(5000, (parseInt(hc.value) || 0) + 25); };
 
-  function captureBlock(label, listName){
+  /* label: button text · listName: segment the address joins ·
+     sheet: {href, text} for the same material as a printable page, so nobody
+     has to hand over an email to get something we said was free. */
+  function captureBlock(label, listName, sheet){
+    var direct = sheet
+      ? '<p class="small" style="margin-top:8px">Or skip the email: <a href="' + sheet.href + '">' + sheet.text + '</a> - print it straight from your browser.</p>'
+      : '';
     return '<div class="capture" data-form="' + listName + '">' +
+             '<input type="hidden" name="list" value="' + listName + '">' +
              '<input type="email" placeholder="you@example.org" aria-label="Email address">' +
              '<button class="btn btn-green" type="button">' + label + '</button>' +
            '</div><p class="msg" data-msg></p>' +
-           '<p class="small">One useful email now, occasional updates before commencement, unsubscribe any time. No spam - we are on the volunteers\' side, not the marketers\'.</p>';
+           '<p class="small">One useful email now, occasional updates before commencement, unsubscribe any time. No spam - we are on the volunteers\' side, not the marketers\'.</p>' +
+           direct;
   }
 
   document.getElementById('run').onclick = function(){
@@ -800,12 +810,12 @@
     if(pub === 'no'){
       cls = 'ok'; verdict = 'out-of-scope';
       html = '<h3>Likely out of scope</h3><p>Premises not open to the public for these occasions generally fall outside the Act. Keep a note of this check with your records, and run it again if your use changes.</p>' +
-             captureBlock('Email me the confirmation letter', 'out-of-scope');
+             captureBlock('Email me the confirmation letter', 'out-of-scope', {href:'out-of-scope-letter.html', text:'print the scope review record'});
     } else if(n < 200){
       cls = 'ok'; verdict = 'out-of-scope';
       html = '<h3>Out of scope - and that is the honest answer</h3><p>Below 200 people at your busiest reasonable occasion, Martyn\'s Law duties do not apply to you. No notification, no procedures required. Review annually or when your use changes.</p>' +
              '<p><strong>Keep the evidence:</strong> we will email you a free one-page confirmation letter to file with your records. You do not need to buy anything, today or ever.</p>' +
-             captureBlock('Email me the free letter', 'out-of-scope');
+             captureBlock('Email me the free letter', 'out-of-scope', {href:'out-of-scope-letter.html', text:'print the scope review record'});
     } else if(n < 800 || type === 'worship'){
       cls = 'std'; verdict = 'standard';
       html = '<h3>Standard tier - the lighter set of duties</h3><p>' +
@@ -815,12 +825,12 @@
              'You will need to notify the regulator from commencement and have four procedures in place - evacuation, invacuation, lockdown and communication - and make sure your volunteers know them.</p>' +
              '<p><strong>Good news: no cameras, barriers, guards or consultants are required of you.</strong> The whole duty is seven items, and three of them are free through us.</p>' +
              '<div class="capture"><a class="btn btn-brass" href="#minimum">See all seven requirements</a><a class="btn btn-green" href="#pricing">See the packs (from \u00A349)</a></div>' +
-             captureBlock('Or email me the free starter checklist', 'standard');
+             captureBlock('Or email me the free starter checklist', 'standard', {href:'starter-checklist.html', text:'print the starter checklist'});
     } else {
       cls = 'std'; verdict = 'enhanced';
       html = '<h3>Enhanced tier - you need more than a pack</h3><p>At 800 or more people, non-worship venues carry heavier duties: protective measures, a designated senior individual and a compliance document for the regulator. Our pack is a foundation but not sufficient on its own.</p>' +
              '<p>Honest advice: read the enhanced-tier chapters of the statutory guidance on GOV.UK and consider specialist support. We would rather tell you that than sell you the wrong thing.</p>' +
-             captureBlock('Email me the enhanced-tier reading list', 'enhanced');
+             captureBlock('Email me the enhanced-tier reading list', 'enhanced', {href:'enhanced-tier-reading-list.html', text:'print the reading list'});
     }
 
     window.__vrVerdict = verdict;
