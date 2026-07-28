@@ -10,6 +10,20 @@ live before end of August 2026; sales peak Q4 2026 – Q2 2027 (commencement Spr
 Keep it that way unless a task truly requires splitting files. It must remain deployable by
 drag-and-drop to Netlify.
 
+## THE SPINE: seven legal requirements (standard tier) — everything maps to these
+1 Assess scope/tier honestly (capacity incl. staff, busiest realistic occasion) → FREE calculator
+2 Name the responsible person (non-delegable) → Document Pack
+3 Notify the SIA when the portal opens → Document Pack
+4 Have the four procedures: evacuation, invacuation, lockdown, communication → Document Pack
+5 Make staff/volunteers AWARE of the procedures (explicit statutory ask) → Complete Kit (training)
+6 Review the procedures → FREE annual reminder email
+7 Coordinate with other responsible persons / shared premises → Document Pack
+NOT required at standard tier: CCTV, barriers, bag searches, security staff, submitted risk
+assessment, consultants, course certificates. Never sell or imply otherwise.
+Positioning sentence (use everywhere): "Seven legal requirements. One afternoon. Nothing more,
+nothing less." Doc 2 (risk assessment) is NOT statutorily required — always framed as the
+thinking that makes requirement 4 fit the building, never as a legal duty.
+
 ## Audience & voice (do not drift)
 - Buyer: churchwardens, PCC secretaries, village-hall trustees, parish clerks. Age 55–75,
   volunteer, time-poor, sceptical of security-industry fear-selling.
@@ -47,25 +61,53 @@ member use of Complete Kit, incl. webinar). Member rates via associations: £119
 £169 kit. Never sell or imply a "compliance certificate" — Briefing Completion Records only.
 Free lead magnets: scope calculator, out-of-scope letter, Mis-selling Checklist.
 
-## Current TODOs (work these, in order)
-1. Replace payment placeholders with real Stripe/Gumroad links: KIT_PAYMENT_LINK_HERE (x2),
-   PACK_PAYMENT_LINK_HERE (x2), TRAINING_PAYMENT_LINK_HERE (x1). Also LEAD_MAGNET_LINK_HERE
-   for the Mis-selling Checklist PDF (host on the email platform).
-2. Wire email capture to a real endpoint (Formspree or MailerLite embed). Success state
-   inline, no alert(). Add hidden field for verdict type (out-of-scope / standard / enhanced)
-   so the list is segmented.
-3. Create privacy.html and terms.html (plain-English, UK GDPR; ICO number placeholder) and
-   link from footer.
-4. Fill footer placeholders: Ltd name, company number, registered office, ICO number —
-   ask the owner, never invent.
-5. Favicon + og:image (simple brass VR seal on green), meta og/twitter tags.
-6. Plausible or GoatCounter analytics snippet (privacy-friendly; no cookie banner needed).
-7. Netlify deploy: netlify.toml with security headers; connect domain venue-ready.co.uk.
-8. Build the training product page/flow: hosts the narrated video (owner records it from the
-   volunteer briefing deck), 10-question quiz, and a printable Briefing Completion Record
-   (name / venue / date / score) — this is the £49/£199 fulfilment.
-9. Design the Mis-selling Checklist one-page PDF from the #honest section content.
-10. Later: /webinar page for association bookings; printable one-page PDF of the scope result.
+## Files in this repo
+`index.html` (the site) · `privacy.html` · `terms.html` · `training.html` (£49/£199
+fulfilment: video, quiz, Briefing Completion Record) · `checklist.html` (printable
+Mis-selling Checklist) · `review-sheet.html` (printable annual review walk-through) ·
+`netlify.toml` · `favicon.svg` · `og-image.png` (+ `og-image.html` source) ·
+`content/annual-review-reminder-email.md` (copy for the MailerLite automation).
+
+## Current TODOs
+
+### Blocked on the owner — nothing else can close these
+1. **Payment links.** Fill `PACK_PAYMENT_URL`, `KIT_PAYMENT_URL`, `TRAINING_PAYMENT_URL` in
+   the CONFIG block at the bottom of `index.html`. While any is empty that button falls back
+   to a pre-written email, so no click is ever dead — but nobody can pay by card until these
+   are real Stripe/Gumroad URLs.
+2. **`FORM_ENDPOINT`.** Same CONFIG block. MailerLite (free tier does automations; Formspree
+   does not) plus SPF/DKIM/DMARC, or church and council spam filters will eat everything.
+   Every capture posts `email`, `list` and `verdict` so the list segments itself.
+3. **Company placeholders** in the footer of every page: Ltd name, company number,
+   registered office, ICO number. Ask the owner — never invent these.
+4. **VAT position** — `[VAT position confirmed at launch]` in the #buying section.
+5. **Phone number and hours** — `[phone number] — [days and hours]` in the #buying section.
+6. **Record the training video**, then set `VIDEO_EMBED_URL` in `training.html`. Until it
+   exists, do not list the Complete Kit as available.
+
+### Done (do not redo)
+- Config-first wiring of every payment/download button, with email fallbacks.
+- Email capture wired to `FORM_ENDPOINT` with inline success state, no `alert()`, and
+  hidden `list` + `verdict` fields for segmentation.
+- `privacy.html`, `terms.html`, linked from the footer. Terms match the site's 30-day
+  refund promise and invoice/BACS route — **if one changes, change the other.**
+- Favicon, og-image, full OG/Twitter meta.
+- `netlify.toml`: security headers + pretty-URL rewrites.
+- `training.html`, `checklist.html`, `review-sheet.html`.
+- Annual review reminder (requirement 6): capture in #minimum, printable sheet, and the
+  yearly email drafted in `content/annual-review-reminder-email.md`.
+
+### Still to build
+7. Privacy-friendly analytics (Plausible or GoatCounter). No cookie banner needed — and
+   the privacy notice currently says we run no tracking cookies, so keep it that way.
+8. Design the Mis-selling Checklist as a hosted PDF if the email platform needs one;
+   `checklist.html` already prints to A4 and is what `LEAD_MAGNET_URL` points at.
+9. Later: `/webinar` page for association bookings; printable one-page PDF of the scope result.
+
+### Keep the spine intact
+Keep the `#minimum` section as the site's spine — if products change, update the seven-row
+mapping first, then everything else. The verdict copy, the pricing cards and the FAQ all
+lean on it.
 
 ## Do NOT
 - Add a subscription tier, urgency countdown timers, exit popups, or testimonials that

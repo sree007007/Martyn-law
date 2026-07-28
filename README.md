@@ -1,6 +1,18 @@
 # Venue-Ready website
 
-Single-file site: `index.html`. No build step.
+Static site, no build step. `index.html` is the whole marketing and conversion flow.
+
+| File | What it is |
+|---|---|
+| `index.html` | The site. Scope checker, the seven-requirement spine, pricing, buying info, FAQ. |
+| `privacy.html` · `terms.html` | Legal pages, linked from every footer. |
+| `training.html` | £49/£199 fulfilment: video, quiz, printable Briefing Completion Record. |
+| `checklist.html` | Free printable Mis-selling Checklist (A4). |
+| `review-sheet.html` | Free printable 20-minute annual review walk-through (A4, prints on one sheet, both sides). |
+| `content/` | Email copy that isn't a web page — currently the annual review automation. |
+| `netlify.toml` | Security headers and pretty-URL rewrites. |
+
+Before launch, edit only the `CONFIG` block at the bottom of `index.html`.
 
 ## Work on it with Claude Code
 1. Put this folder anywhere on your machine (e.g. ~/projects/venue-ready).

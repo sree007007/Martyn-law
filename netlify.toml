@@ -41,3 +41,8 @@
   from = "/checklist"
   to = "/checklist.html"
   status = 200
+
+[[redirects]]
+  from = "/review-sheet"
+  to = "/review-sheet.html"
+  status = 200
