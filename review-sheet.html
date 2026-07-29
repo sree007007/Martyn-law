@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 20-minute annual review sheet — Venue-Ready</title>
+<meta name="description" content="A free printable walk-through for the annual review of your Martyn's Law procedures. Twenty minutes, seven checks, one signature.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#1E3D2F; --green-deep:#152B21; --paper:#FAF7F0; --paper-edge:#EFE9DC;
+    --ink:#22271F; --brass:#B08D3E; --brass-soft:#C9A85C; --amber:#8A5A16; --ok:#2F6B3A;
+    --line:#D8D2C4;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  @media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
+  body{font-family:'Atkinson Hyperlegible',system-ui,sans-serif; font-size:16px; line-height:1.55; color:var(--ink); background:var(--paper-edge); padding:26px 16px}
+  h1,h2,h3{font-family:'Young Serif',Georgia,serif; font-weight:400; line-height:1.15}
+  a{color:var(--green)}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--brass); outline-offset:3px; border-radius:3px}
+
+  .toolbar{max-width:820px; margin:0 auto 18px; display:flex; gap:12px; justify-content:space-between; align-items:center; flex-wrap:wrap}
+  .toolbar a{font-size:15px; text-decoration:none; font-weight:700}
+  .btn{display:inline-block; font-weight:700; font-size:16px; text-decoration:none; border-radius:6px; padding:11px 22px; cursor:pointer; border:2px solid transparent; font-family:inherit; background:var(--brass); color:#fff}
+  .btn:hover{background:#9a7a33}
+
+  /* THE A4 SHEET */
+  .sheet{max-width:820px; margin:0 auto 20px; background:#fff; border:1px solid var(--line); box-shadow:0 8px 26px rgba(34,39,31,.12);
+    padding:40px 44px 34px; position:relative}
+  .sheet::before{content:""; position:absolute; left:0; right:0; top:0; height:8px;
+    background:repeating-linear-gradient(90deg, var(--brass) 0 46px, transparent 46px 60px)}
+
+  .head{display:flex; align-items:center; gap:16px; border-bottom:2px solid var(--line); padding-bottom:18px; margin-bottom:18px}
+  .seal{width:60px; height:60px; border-radius:50%; background:var(--green); color:var(--brass-soft); display:flex; align-items:center; justify-content:center;
+    font-family:'Young Serif',serif; font-size:21px; border:3px solid var(--brass); flex:none}
+  .head .eyebrow{font-size:12.5px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; color:var(--amber)}
+  .head h1{font-size:29px; color:var(--green); margin-top:2px}
+  .intro{font-size:15.5px; margin-bottom:18px; color:#3D443A}
+  .intro strong{color:var(--green)}
+
+  /* Write-in header fields */
+  .fields{display:grid; grid-template-columns:1fr 1fr; gap:10px 22px; margin-bottom:22px}
+  @media(max-width:560px){ .fields{grid-template-columns:1fr} }
+  .field{font-size:14.5px; color:#3D443A}
+  .field span{font-weight:700; color:var(--green)}
+  .field .rule{display:block; border-bottom:1.5px solid var(--line); height:22px; margin-top:2px}
+
+  /* Steps */
+  .step{display:grid; grid-template-columns:auto 1fr auto; gap:14px; padding:13px 0; border-bottom:1px solid var(--paper-edge); break-inside:avoid; page-break-inside:avoid}
+  .step .n{width:32px; height:32px; border-radius:6px; background:var(--green); color:var(--brass-soft); font-family:'Young Serif',serif; font-size:17px;
+    display:flex; align-items:center; justify-content:center; flex:none}
+  .step h3{font-size:17px; color:var(--green); margin-bottom:3px}
+  .step p{font-size:14.5px; color:#3D443A}
+  .step .req{font-size:12.5px; font-weight:700; color:var(--amber); letter-spacing:.04em; text-transform:uppercase; display:block; margin-top:5px}
+  .tick{display:flex; gap:8px; align-items:flex-start; flex:none; padding-top:4px}
+  .box{width:22px; height:22px; border:2px solid var(--green); border-radius:3px; flex:none}
+  .tick .lbl{font-size:11.5px; color:#5A6053; line-height:1.15; width:44px}
+
+  /* Actions table */
+  h2.block{font-size:20px; color:var(--green); margin:24px 0 10px}
+  .tablewrap{overflow-x:auto}
+  table{width:100%; min-width:440px; border-collapse:collapse; font-size:14px}
+  th{background:var(--paper-edge); color:var(--green); text-align:left; font-size:13px; letter-spacing:.05em; text-transform:uppercase; padding:8px 10px; border:1px solid var(--line)}
+  td{border:1px solid var(--line); padding:0; height:34px}
+
+  .callout{margin-top:20px; background:var(--paper-edge); border-left:5px solid var(--brass); border-radius:0 6px 6px 0; padding:14px 16px; font-size:14.5px; break-inside:avoid}
+  .callout strong{color:var(--green)}
+  .signoff{margin-top:22px; border:2px solid var(--line); border-radius:6px; padding:16px 18px; break-inside:avoid}
+  .signoff h2{font-size:18px; color:var(--green); margin-bottom:4px}
+  .signoff p{font-size:14px; color:#3D443A; margin-bottom:12px}
+
+  .url{text-align:center; font-family:'Young Serif',serif; font-size:19px; color:var(--green); margin-top:18px}
+  .disclaimer{font-size:11.5px; color:#5A6053; line-height:1.5; border-top:1px solid var(--line); padding-top:14px; margin-top:16px}
+
+  @media(max-width:560px){
+    body{padding:16px 10px}
+    .sheet{padding:30px 20px 26px}
+  }
+
+  /* Print: two sides of one A4 sheet — walk-through on the front, records on the back */
+  @media print{
+    @page{ size:A4; margin:12mm }
+    body{background:#fff; padding:0; font-size:9.6pt; line-height:1.4}
+    .toolbar{display:none}
+    .sheet{max-width:none; box-shadow:none; border:none; padding:0; margin:0}
+    .sheet::before{display:none}
+    a{color:#000; text-decoration:none}
+    .head{padding-bottom:10px; margin-bottom:12px}
+    .head h1{font-size:20pt} .seal{width:46px; height:46px; font-size:16px}
+    .intro{font-size:9.4pt; margin-bottom:10px}
+    .fields{gap:6px 20px; margin-bottom:10px}
+    .field{font-size:9pt} .field .rule{height:17px}
+    .step{padding:7px 0; gap:11px}
+    .step .n{width:26px; height:26px; font-size:13px}
+    .step h3{font-size:10.6pt} .step p{font-size:9.2pt} .step .req{font-size:8pt; margin-top:3px}
+    .box{width:18px; height:18px} .tick .lbl{font-size:7.5pt; width:38px}
+    .callout{margin-top:8px; padding:9px 12px; font-size:9pt}
+    h2.block{font-size:13pt; margin:16px 0 8px}
+    table{font-size:8.8pt; min-width:0} th{padding:5px 8px; font-size:8.4pt} td{height:26px}
+    .tablewrap{overflow:visible}
+    .signoff{margin-top:14px; padding:12px 14px}
+    .signoff p{font-size:9pt; margin-bottom:8px}
+    .url{font-size:13pt; margin-top:12px}
+    .disclaimer{font-size:7.6pt; padding-top:10px; margin-top:12px}
+    .step, .head, .signoff, .callout, table{break-inside:avoid}
+    .pagebreak{break-before:page; page-break-before:always}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <a href="index.html">&larr; Back to Venue-Ready</a>
+  <button class="btn" id="printBtn" type="button">Print / save as PDF</button>
+</div>
+
+<div class="sheet">
+  <div class="head">
+    <div class="seal">VR</div>
+    <div>
+      <div class="eyebrow">Free &middot; requirement 6 &middot; do this once a year</div>
+      <h1>The 20-minute annual review</h1>
+    </div>
+  </div>
+
+  <p class="intro">Martyn's Law asks standard-tier venues to keep their procedures current &mdash; that's requirement 6 of the seven. It doesn't ask for a report, a submission or an inspection. It asks you to look again, once a year, and change anything that no longer fits the building. <strong>Walk round with this sheet, tick as you go, and file it with your fire log.</strong> If nothing has changed, that is a perfectly good result &mdash; write "no changes" and sign it.</p>
+
+  <div class="fields">
+    <div class="field"><span>Venue</span><span class="rule"></span></div>
+    <div class="field"><span>Date of this review</span><span class="rule"></span></div>
+    <div class="field"><span>Review carried out by</span><span class="rule"></span></div>
+    <div class="field"><span>Date of last review</span><span class="rule"></span></div>
+  </div>
+
+  <div class="step">
+    <div class="n">1</div>
+    <div>
+      <h3>Has anything changed about how the building is used?</h3>
+      <p>New regular hirer, a bigger annual event, a room brought back into use, a wall moved, a hall extension. If your busiest realistic occasion has grown past 200 people &mdash; counting staff and volunteers &mdash; your scope may have changed. Re-run the free checker if you're not sure.</p>
+      <span class="req">Requirement 1 &middot; scope &middot; 3 minutes</span>
+    </div>
+    <div class="tick"><span class="box"></span><span class="lbl">Checked</span></div>
+  </div>
+
+  <div class="step">
+    <div class="n">2</div>
+    <div>
+      <h3>Is the named responsible person still the right one?</h3>
+      <p>Churchwardens rotate, clerks move on, trustees stand down. Check the name written in your documents is the person who actually controls the premises today, and that they know the duty sits with them.</p>
+      <span class="req">Requirement 2 &middot; responsible person &middot; 2 minutes</span>
+    </div>
+    <div class="tick"><span class="box"></span><span class="lbl">Checked</span></div>
+  </div>
+
+  <div class="step">
+    <div class="n">3</div>
+    <div>
+      <h3>Are your notification details still accurate?</h3>
+      <p>Once you have notified the regulator, the contact name, email and phone you gave need to stay current. If the person who notified has left, update it.</p>
+      <span class="req">Requirement 3 &middot; notification &middot; 2 minutes</span>
+    </div>
+    <div class="tick"><span class="box"></span><span class="lbl">Checked</span></div>
+  </div>
+
+  <div class="step">
+    <div class="n">4</div>
+    <div>
+      <h3>Walk the four procedures against the actual building</h3>
+      <p>Evacuation: are the exits and assembly point still usable and unobstructed? Invacuation: is the room you named still available, and can it still be secured? Lockdown: do the doors you rely on still lock, and does someone have the key? Communication: is the alert phrase still known, and is the "who calls 999" answer still a real person?</p>
+      <span class="req">Requirement 4 &middot; the four procedures &middot; 8 minutes, on foot</span>
+    </div>
+    <div class="tick"><span class="box"></span><span class="lbl">Checked</span></div>
+  </div>
+
+  <div class="step">
+    <div class="n">5</div>
+    <div>
+      <h3>Do the people on duty still know what to do?</h3>
+      <p>List anyone who has started since the last briefing &mdash; new sidespeople, new key-holders, new committee members &mdash; and book them in. The Act asks that your staff and volunteers are made aware of the procedures, so keep the briefing records with this sheet.</p>
+      <span class="req">Requirement 5 &middot; awareness &middot; 3 minutes</span>
+    </div>
+    <div class="tick"><span class="box"></span><span class="lbl">Checked</span></div>
+  </div>
+
+  <div class="step">
+    <div class="n">6</div>
+    <div>
+      <h3>Are the hirers and anyone you share with still in the loop?</h3>
+      <p>Check the emergency sheet in your booking pack is the current version, and that any group running the building without you has been given it. If you share the premises, confirm with the other responsible person that your procedures still line up.</p>
+      <span class="req">Requirement 7 &middot; coordination &middot; 2 minutes</span>
+    </div>
+    <div class="tick"><span class="box"></span><span class="lbl">Checked</span></div>
+  </div>
+
+  <div class="step">
+    <div class="n">7</div>
+    <div>
+      <h3>File it and set the next date</h3>
+      <p>Put this sheet in the evidence log with your procedures and briefing records, and note the review in the minutes of your next meeting. Set a reminder for twelve months' time.</p>
+      <span class="req">Evidence &middot; 1 minute</span>
+    </div>
+    <div class="tick"><span class="box"></span><span class="lbl">Checked</span></div>
+  </div>
+
+  <div class="callout">
+    <strong>Do it sooner than a year</strong> if something material changes: a building alteration, a new regular event that is much bigger than anything before, a change of responsible person, or anything that made you think "our plan wouldn't have worked there". A review after a real incident or a near miss is worth more than any diary date.
+  </div>
+
+  <div class="pagebreak"></div>
+
+  <h2 class="block">What changed, and what we did about it</h2>
+  <div class="tablewrap">
+  <table>
+    <thead>
+      <tr><th style="width:26%">What changed</th><th style="width:38%">What we changed in the procedures</th><th style="width:20%">Who</th><th style="width:16%">Done (date)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 class="block">People briefed since the last review</h2>
+  <div class="tablewrap">
+  <table>
+    <thead>
+      <tr><th style="width:34%">Name</th><th style="width:33%">Role at the venue</th><th style="width:33%">Date briefed</th></tr>
+    </thead>
+    <tbody>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="signoff">
+    <h2>Sign-off</h2>
+    <p>I have reviewed the public protection procedures for this venue and recorded any changes above. Where no changes were needed, that has been recorded as the outcome.</p>
+    <div class="fields">
+      <div class="field"><span>Responsible person (name)</span><span class="rule"></span></div>
+      <div class="field"><span>Signature</span><span class="rule"></span></div>
+      <div class="field"><span>Date</span><span class="rule"></span></div>
+      <div class="field"><span>Next review due</span><span class="rule"></span></div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Want the yearly nudge?</strong> Venue-Ready sends one email a year when your review falls due, with a fresh copy of this sheet. It's free, it stays free, and it doesn't require you to have bought anything &mdash; sign up at venue-ready.co.uk.
+  </div>
+
+  <div class="url">venue-ready.co.uk</div>
+
+  <div class="disclaimer">
+    Venue-Ready provides independent template guidance based on the Terrorism (Protection of Premises) Act 2025 and the Home Office statutory guidance (April 2026). It is not legal advice and is not endorsed by the Home Office or the Security Industry Authority. The responsible person retains all legal duties under the Act. Completing this sheet is not a certificate of compliance &mdash; no such certificate exists in law. Official guidance is free at GOV.UK and ProtectUK.
+  </div>
+</div>
+
+<script>
+  document.getElementById('printBtn').onclick=function(){ window.print(); };
+</script>
+</body>
+</html>
